@@ -37,6 +37,6 @@ public class CreateCourseServlet extends HttpServlet {
                 .changeTeacher(new Teacher().changeId(teacherId))
                 .changeModerationStatus(false);
         courseService.add(course);
-        resp.sendRedirect("/WEB-INF/pages/all_courses.jsp");
+        resp.sendRedirect("/courses");
     }
 }

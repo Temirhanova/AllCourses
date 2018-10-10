@@ -5,6 +5,8 @@ import ru.innopolis.stc.dao.CourseDaoImpl;
 import ru.innopolis.stc.db.connectionPool.DatabaseConnectionPool;
 import ru.innopolis.stc.pojo.Course;
 
+import java.util.List;
+
 import static ru.innopolis.stc.db.connectionPool.DatabaseProperties.*;
 
 
@@ -20,5 +22,10 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course add(Course course) {
         return courseDao.add(course);
+    }
+
+    @Override
+    public List<Course> getAll() {
+        return courseDao.getAll();
     }
 }
