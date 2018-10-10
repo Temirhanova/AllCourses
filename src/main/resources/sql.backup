@@ -21,7 +21,7 @@ SET default_with_oids = false;
 
 CREATE TABLE course (
     id integer NOT NULL,
-    modetationstatus boolean DEFAULT false,
+    moderation_status boolean DEFAULT false,
     name character varying(100),
     description character varying,
     teacher_id integer
