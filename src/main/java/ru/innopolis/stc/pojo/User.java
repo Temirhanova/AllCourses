@@ -7,29 +7,27 @@ public class User {
     public static final int ADMINISTRATOR = 4;
 
     private int id;
-    private int type;
+    private int role;
     private String mail;
     private String pass;
-    private String first_name;
-    private String last_name;
-    private String patronymic;
+    private String firstName;
+    private String lastName;
 
-    public User(int id, int type, String mail, String pass, String first_name, String last_name, String patronymic) {
+    public User(int id, int role, String mail, String pass, String firstName, String lastName) {
         this.id = id;
-        this.type = type;
+        this.role = role;
         this.mail = mail;
         this.pass = pass;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.patronymic = patronymic;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getType() {
-        return type;
+    public int getRole() {
+        return role;
     }
 
     public String getMail() {
@@ -40,43 +38,35 @@ public class User {
         return pass;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
+    public String getLastName() {
+        return lastName;
     }
 
     public User сhangeId(int id) {
-        return new User(id, type, mail, pass, first_name, last_name, patronymic);
+        return new User(id, role, mail, pass, firstName, lastName);
     }
 
     public User сhangeType(int type) {
-        return new User(id, type, mail, pass, first_name, last_name, patronymic);
+        return new User(id, type, mail, pass, firstName, lastName);
     }
 
     public User сhangeMail(String mail) {
-        return new User(id, type, mail, pass, first_name, last_name, patronymic);
+        return new User(id, role, mail, pass, firstName, lastName);
     }
 
     public User сhangePass(String pass) {
-        return new User(id, type, mail, pass, first_name, last_name, patronymic);
+        return new User(id, role, mail, pass, firstName, lastName);
     }
 
-    public User сhangeFirst_name(String first_name) {
-        return new User(id, type, mail, pass, first_name, last_name, patronymic);
+    public User сhangeFirstName(String firstName) {
+        return new User(id, role, mail, pass, firstName, lastName);
     }
 
-    public User сhangeLast_name(String last_name) {
-        return new User(id, type, mail, pass, first_name, last_name, patronymic);
-    }
-
-    public User сhangePatronymic(String patronymic) {
-        return new User(id, type, mail, pass, first_name, last_name, patronymic);
+    public User сhangeLastName(String lastName) {
+        return new User(id, role, mail, pass, firstName, lastName);
     }
 }
