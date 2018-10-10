@@ -15,6 +15,13 @@ public class Course {
         this.teacher = teacher;
     }
 
+    public Course(int id, boolean moderationstatus, String name, String description) {
+        this.id = id;
+        this.moderationstatus = moderationstatus;
+        this.name = name;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }
@@ -53,5 +60,16 @@ public class Course {
 
     public Course changeTeacher(Teacher teacher) {
         return new Course(id, moderationstatus, name, description, teacher);
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", moderationstatus=" + moderationstatus +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", teacher=" + teacher +
+                '}';
     }
 }
