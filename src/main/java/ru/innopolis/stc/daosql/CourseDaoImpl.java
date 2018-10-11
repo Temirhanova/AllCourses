@@ -31,7 +31,7 @@ public class CourseDaoImpl implements CourseDao {
             preparedStatement.setInt(4, course.getTeacher().getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                course.changeId(resultSet.getInt(1));
+                course = course.changeId(resultSet.getInt(1));
             }
             resultSet.close();
             return course;
