@@ -1,30 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="icon" href="/static/images/favicon.ico"/>
     <meta charset="utf-8"/>
-    <title></title>
-    <style>
-        <%@include file="/static/css/style.css" %>
-    </style>
+    <title>Все курсы</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
 <div class="wrapper">
 
-    <header class="header">
-        <strong>Header:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tortor. Praesent dictum,
-        libero ut tempus dictum, neque eros elementum mauris, quis mollis arcu velit ac diam. Etiam neque. Quisque nec
-        turpis. Aliquam arcu nulla, dictum et, lacinia a, mollis in, ante. Sed eu felis in elit tempor venenatis. Cum
-        sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut ultricies porttitor purus.
-        Proin non tellus at ligula fringilla tristique. Fusce vehicula quam. Curabitur vel tortor vitae pede imperdiet
-        ultrices. Sed tortor.
-    </header><!-- .header-->
+    <t:header/>
 
     <div class="middle">
-
         <div class="container">
             <main class="content">
                 <strong>Content:</strong> Sed placerat accumsan ligula. Aliquam felis magna, congue quis, tempus eu,
@@ -36,23 +27,13 @@
             </main><!-- .content -->
         </div><!-- .container-->
 
-        <aside class="left-sidebar">
-            <strong>Left Sidebar:</strong> Integer velit. Vestibulum nisi nunc, accumsan ut, vehicula sit amet, porta a,
-            mi. Nam nisl tellus, placerat eget, posuere eget, egestas eget, dui. Pellentesque habitant morbi tristique
-            senectus et netus et malesuada fames ac turpis egestas. In elementum urna a eros. Integer iaculis. Maecenas
-            vel elit.
-        </aside><!-- .left-sidebar -->
+        <t:left_sidebar/>
 
     </div><!-- .middle-->
 
 </div><!-- .wrapper -->
 
-<footer class="footer">
-    <strong>Footer:</strong> Mus elit Morbi mus enim lacus at quis Nam eget morbi. Et semper urna urna non at cursus
-    dolor vestibulum neque enim. Tellus interdum at laoreet laoreet lacinia lacinia sed Quisque justo quis. Hendrerit
-    scelerisque lorem elit orci tempor tincidunt enim Phasellus dignissim tincidunt. Nunc vel et Sed nisl Vestibulum
-    odio montes Aliquam volutpat pellentesque. Ut pede sagittis et quis nunc gravida porttitor ligula.
-</footer><!-- .footer -->
+<t:footer/>
 
 </body>
 </html>

@@ -1,13 +1,12 @@
 package ru.innopolis.stc.services;
 
 import ru.innopolis.stc.dao.CourseDao;
-import ru.innopolis.stc.dao.CourseDaoImpl;
+import ru.innopolis.stc.daosql.CourseDaoImpl;
 import ru.innopolis.stc.db.connectionPool.DatabaseConnectionPool;
 import ru.innopolis.stc.pojo.Course;
 
 import java.util.List;
 
-import static ru.innopolis.stc.db.DatabaseProperties.*;
 
 
 public class CourseServiceImpl implements CourseService {
@@ -15,7 +14,7 @@ public class CourseServiceImpl implements CourseService {
     private CourseDao courseDao;
 
     public CourseServiceImpl() {
-        DatabaseConnectionPool databaseConnectionPool = new DatabaseConnectionPool(URL, USER, PASSWORD);
+        DatabaseConnectionPool databaseConnectionPool = new DatabaseConnectionPool("jdbc:postgresql://localhost:5432/allcourse", "postgres", "1234");
         courseDao = new CourseDaoImpl(databaseConnectionPool);
     }
 

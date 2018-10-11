@@ -1,10 +1,10 @@
-package ru.innopolis.stc.dao;
+package ru.innopolis.stc.daosql;
 
 import org.apache.log4j.Logger;
+import ru.innopolis.stc.dao.CourseDao;
 import ru.innopolis.stc.db.connectionPool.DatabaseConnectionPool;
 import ru.innopolis.stc.pojo.Course;
 import ru.innopolis.stc.pojo.Teacher;
-import ru.innopolis.stc.pojo.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -38,8 +38,8 @@ public class CourseDaoImpl implements CourseDao {
             return course;
         } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -57,8 +57,8 @@ public class CourseDaoImpl implements CourseDao {
             return course;
         } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -87,10 +87,11 @@ public class CourseDaoImpl implements CourseDao {
                 );
             }
             resultSet.close();
+            return course;
         } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -134,8 +135,8 @@ public class CourseDaoImpl implements CourseDao {
             return courseList;
         } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
+            return null;
         }
-        return null;
     }
 
 }

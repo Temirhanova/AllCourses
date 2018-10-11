@@ -23,7 +23,7 @@
     <!--Маппинги-->
     <servlet-mapping>
         <servlet-name>startPage</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/start_page</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
