@@ -10,9 +10,35 @@
         <servlet-class>ru.innopolis.stc.controller.StartPage</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>allCourses</servlet-name>
+        <servlet-class>ru.innopolis.stc.controller.CourseServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>createCourse</servlet-name>
+        <servlet-class>ru.innopolis.stc.controller.CreateCourseServlet</servlet-class>
+    </servlet>
+
+    <!--Маппинги-->
     <servlet-mapping>
         <servlet-name>startPage</servlet-name>
         <url-pattern>/start_page</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>allCourses</servlet-name>
+        <url-pattern>/courses</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>createCourse</servlet-name>
+        <url-pattern>/course/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/static/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

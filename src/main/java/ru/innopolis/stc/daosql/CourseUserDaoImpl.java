@@ -7,7 +7,6 @@ import ru.innopolis.stc.db.connectionPool.DatabaseConnectionPool;
 import ru.innopolis.stc.pojo.Course;
 import ru.innopolis.stc.pojo.CourseUser;
 import ru.innopolis.stc.pojo.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

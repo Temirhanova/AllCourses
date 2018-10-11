@@ -15,13 +15,6 @@ public class Course {
         this.teacher = teacher;
     }
 
-    public Course(int id, boolean moderationstatus, String name, String description) {
-        this.id = id;
-        this.moderationstatus = moderationstatus;
-        this.name = name;
-        this.description = description;
-    }
-
     public int getId() {
         return id;
     }
