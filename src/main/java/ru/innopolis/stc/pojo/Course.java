@@ -2,18 +2,14 @@ package ru.innopolis.stc.pojo;
 
 public class Course {
     private int id;
-    private boolean moderationStatus;
+    private boolean moderationstatus;
     private String name;
     private String description;
     private Teacher teacher;
 
-    public Course() {
-    }
-
-
     public Course(int id, boolean moderationstatus, String name, String description, Teacher teacher) {
         this.id = id;
-        this.moderationStatus = moderationstatus;
+        this.moderationstatus = moderationstatus;
         this.name = name;
         this.description = description;
         this.teacher = teacher;
@@ -23,8 +19,8 @@ public class Course {
         return id;
     }
 
-    public boolean isModerationStatus() {
-        return moderationStatus;
+    public boolean isModerationstatus() {
+        return moderationstatus;
     }
 
     public String getName() {
@@ -40,27 +36,33 @@ public class Course {
     }
 
     public Course changeId(int id) {
-        this.id = id;
-        return this;
+        return new Course(id, moderationstatus, name, description, teacher);
     }
 
-    public Course changeModerationStatus(boolean moderationStatus) {
-        this.moderationStatus = moderationStatus;
-        return this;
+    public Course changeModerationstatus(boolean moderationstatus) {
+        return new Course(id, moderationstatus, name, description, teacher);
     }
 
     public Course changeName(String name) {
-        this.name = name;
-        return this;
+        return new Course(id, moderationstatus, name, description, teacher);
     }
 
     public Course changeDescription(String description) {
-        this.description = description;
-        return this;
+        return new Course(id, moderationstatus, name, description, teacher);
     }
 
     public Course changeTeacher(Teacher teacher) {
-        this.teacher = teacher;
-        return this;
+        return new Course(id, moderationstatus, name, description, teacher);
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", moderationstatus=" + moderationstatus +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", teacher=" + teacher +
+                '}';
     }
 }

@@ -4,12 +4,9 @@ public class Teacher {
     private int id;
     private User user;
     private String description;
-    private byte[] photo;
+    private String photo;
 
-    public Teacher() {
-    }
-
-    public Teacher(int id, User user, String description, byte[] photo) {
+    public Teacher(int id, User user, String description, String photo) {
         this.id = id;
         this.user = user;
         this.description = description;
@@ -28,13 +25,12 @@ public class Teacher {
         return description;
     }
 
-    public byte[] getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
     public Teacher changeId(int id) {
-        this.id = id;
-        return this;
+        return new Teacher(id, user, description, photo);
     }
 
     public Teacher changeUser(User user) {
@@ -45,7 +41,7 @@ public class Teacher {
         return new Teacher(id, user, description, photo);
     }
 
-    public Teacher changePhoto(byte[] photo) {
+    public Teacher changePhoto(String photo) {
         return new Teacher(id, user, description, photo);
     }
 }

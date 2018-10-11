@@ -31,11 +31,7 @@ public class CreateCourseServlet extends HttpServlet {
         String description = req.getParameter("description");
         Integer teacherId = Integer.valueOf(req.getParameter("teacherId"));
 
-        Course course = new Course()
-                .changeName(name)
-                .changeDescription(description)
-                .changeTeacher(new Teacher().changeId(teacherId))
-                .changeModerationStatus(false);
+        Course course = new Course(0, false, name, description, null);
         courseService.add(course);
         resp.sendRedirect("/courses");
     }

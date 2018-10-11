@@ -26,7 +26,7 @@ public class CourseDaoImpl implements CourseDao {
         String query = "INSERT INTO course values (DEFAULT, ?, ?, ?, ?) RETURNING id";
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setBoolean(1, course.isModerationStatus());
+            preparedStatement.setBoolean(1, course.isModerationstatus());
             preparedStatement.setString(2, course.getName());
             preparedStatement.setString(3, course.getDescription());
             preparedStatement.setInt(4, course.getTeacher().getId());
@@ -49,7 +49,7 @@ public class CourseDaoImpl implements CourseDao {
                 "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setBoolean(1, course.isModerationStatus());
+            preparedStatement.setBoolean(1, course.isModerationstatus());
             preparedStatement.setString(2, course.getName());
             preparedStatement.setString(3, course.getDescription());
             preparedStatement.setInt(4, course.getTeacher().getId());
@@ -68,25 +68,26 @@ public class CourseDaoImpl implements CourseDao {
                 "JOIN teacher ON course.teacher_id = teacher.id " +
                 "WHERE id = ?";
         try (Connection connection = connectionPool.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query))
-        {
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                course = new Course();
-                course.changeId(resultSet.getInt(1));
-                course.changeModerationStatus(resultSet.getBoolean(2));
-                course.changeName(resultSet.getString(3));
-                course.changeDescription(resultSet.getString(4));
-
-                Teacher teacher = new Teacher();
-                teacher.changeId(resultSet.getInt(5));
-                teacher.changeUser(new User().сhangeId(resultSet.getInt(6)));
-                teacher.changeDescription(resultSet.getString(7));
-                course.changeTeacher(teacher);
+                Teacher teacher = new Teacher(
+                        resultSet.getInt(5),
+                        null,
+                        resultSet.getString(7),
+                        resultSet.getString(8)
+                );
+                course = new Course(
+                        resultSet.getInt(1),
+                        resultSet.getBoolean(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        teacher
+                );
             }
             resultSet.close();
-        } catch (SQLException  | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
         }
         return null;
@@ -96,12 +97,11 @@ public class CourseDaoImpl implements CourseDao {
     public Course delete(Course course) {
         String query = "DELETE FROM course WHERE id=?";
         try (Connection connection = connectionPool.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query))
-        {
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, course.getId());
             preparedStatement.execute();
             return course;
-        } catch (SQLException  | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
         }
         return null;
@@ -113,25 +113,26 @@ public class CourseDaoImpl implements CourseDao {
                 "JOIN teacher ON course.teacher_id = teacher.id";
         try (Connection connection = connectionPool.getConnection();
              Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query))
-        {
+             ResultSet resultSet = statement.executeQuery(query)) {
             List<Course> courseList = new ArrayList<>();
             while (resultSet.next()) {
-                Course course = new Course();
-                course.changeId(resultSet.getInt(1));
-                course.changeModerationStatus(resultSet.getBoolean(2));
-                course.changeName(resultSet.getString(3));
-                course.changeDescription(resultSet.getString(4));
-
-                Teacher teacher = new Teacher();
-                teacher.changeId(resultSet.getInt(5));
-                teacher.changeUser(new User().сhangeId(resultSet.getInt(6)));
-                teacher.changeDescription(resultSet.getString(7));
-                course.changeTeacher(teacher);
+                Teacher teacher = new Teacher(
+                        resultSet.getInt(5),
+                        null,
+                        resultSet.getString(7),
+                        resultSet.getString(8)
+                );
+                Course course = new Course(
+                        resultSet.getInt(1),
+                        resultSet.getBoolean(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        teacher
+                );
                 courseList.add(course);
             }
             return courseList;
-        } catch (SQLException  | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e.getMessage(), e);
         }
         return null;
