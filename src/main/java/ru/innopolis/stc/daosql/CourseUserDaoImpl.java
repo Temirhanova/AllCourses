@@ -1,5 +1,7 @@
 package ru.innopolis.stc.daosql;
 
+import org.apache.log4j.Logger;
+import ru.innopolis.stc.controller.StartPage;
 import ru.innopolis.stc.dao.CourseUserDao;
 import ru.innopolis.stc.db.connectionPool.DatabaseConnectionPool;
 import ru.innopolis.stc.pojo.Course;
@@ -14,9 +16,9 @@ import java.util.List;
 
 public class CourseUserDaoImpl implements CourseUserDao {
     DatabaseConnectionPool databaseConnectionPool = new DatabaseConnectionPool("jdbc:postgresql://localhost:5432/allcourse", "postgres", "1234");
-
+    private final static Logger LOGGER = Logger.getLogger(StartPage.class);
     @Override
-    public List<User> findUsers(Course course, User user) {
+    public List<User> findUsers(User user) {
         List<User> users = null;
         try (Connection connection = databaseConnectionPool.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement("select u.id, u.role, u.email, u.password, u.firstname, u.secondname from course_user as cu inner join \"user\" as u on cu.user_id = u.id and cu.user_id = ?");
@@ -33,15 +35,15 @@ public class CourseUserDaoImpl implements CourseUserDao {
                         resultSet.getString(6)));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return users;
     }
 
     @Override
-    public List<Course> findCourses(Course course, User user) {
+    public List<Course> findCourses(Course course) {
         List<Course> courses = null;
         try (Connection connection = databaseConnectionPool.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement("select c.id, c.modetationstatus, c.name, c.description, c.teacher_id from course_user as cu inner join course as c on cu.course_id = c.id and cu.course_id = ?");
@@ -57,9 +59,9 @@ public class CourseUserDaoImpl implements CourseUserDao {
                 // TODO: 10.10.2018 use method CourseDao.getID(int id); with check. Source from resultSet.getInt(5)
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return courses;
     }

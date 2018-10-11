@@ -6,7 +6,7 @@ import ru.innopolis.stc.pojo.User;
 import java.util.List;
 
 public interface CourseUserDao {
-    List<User> findUsers(Course course, User user);
+    List<User> findUsers(User user);
 
-    List<Course> findCourses(Course course, User user);
+    List<Course> findCourses(Course course);
 }
