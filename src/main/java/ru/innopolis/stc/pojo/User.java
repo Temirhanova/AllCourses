@@ -11,7 +11,7 @@ public class User {
     private String mail;
     private String pass;
     private String firstName;
-    private String lastName;
+    private String secondName;
 
     public User() {
     }
@@ -22,7 +22,7 @@ public class User {
         this.mail = mail;
         this.pass = pass;
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.secondName = secondName;
     }
 
     public int getId() {
@@ -45,31 +45,31 @@ public class User {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSecondName() {
+        return secondName;
     }
 
     public User сhangeId(int id) {
-        return new User(id, role, mail, pass, firstName, lastName);
+        return new User(id, role, mail, pass, firstName, secondName);
     }
 
     public User сhangeType(int type) {
-        return new User(id, type, mail, pass, firstName, lastName);
+        return new User(id, type, mail, pass, firstName, secondName);
     }
 
     public User сhangeMail(String mail) {
-        return new User(id, role, mail, pass, firstName, lastName);
+        return new User(id, role, mail, pass, firstName, secondName);
     }
 
     public User сhangePass(String pass) {
-        return new User(id, role, mail, pass, firstName, lastName);
+        return new User(id, role, mail, pass, firstName, secondName);
     }
 
     public User сhangeFirstName(String firstName) {
-        return new User(id, role, mail, pass, firstName, lastName);
+        return new User(id, role, mail, pass, firstName, secondName);
     }
 
-    public User сhangeLastName(String lastName) {
-        return new User(id, role, mail, pass, firstName, lastName);
+    public User сhangeSecondName(String secondName) {
+        return new User(id, role, mail, pass, firstName, secondName);
     }
 }

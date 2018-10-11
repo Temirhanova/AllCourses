@@ -2,7 +2,7 @@ package ru.innopolis.stc.pojo;
 
 public class Course {
     private int id;
-    private boolean moderationStatus;
+    private boolean moderationstatus;
     private String name;
     private String description;
     private Teacher teacher;
@@ -13,10 +13,17 @@ public class Course {
 
     public Course(int id, boolean moderationstatus, String name, String description, Teacher teacher) {
         this.id = id;
-        this.moderationStatus = moderationstatus;
+        this.moderationstatus = moderationstatus;
         this.name = name;
         this.description = description;
         this.teacher = teacher;
+    }
+
+    public Course(int id, boolean moderationstatus, String name, String description) {
+        this.id = id;
+        this.moderationstatus = moderationstatus;
+        this.name = name;
+        this.description = description;
     }
 
     public int getId() {
@@ -24,7 +31,7 @@ public class Course {
     }
 
     public boolean isModerationStatus() {
-        return moderationStatus;
+        return moderationstatus;
     }
 
     public String getName() {
@@ -45,7 +52,7 @@ public class Course {
     }
 
     public Course changeModerationStatus(boolean moderationStatus) {
-        this.moderationStatus = moderationStatus;
+        this.moderationstatus = moderationStatus;
         return this;
     }
 
@@ -62,5 +69,16 @@ public class Course {
     public Course changeTeacher(Teacher teacher) {
         this.teacher = teacher;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", moderationstatus=" + moderationstatus +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", teacher=" + teacher +
+                '}';
     }
 }
