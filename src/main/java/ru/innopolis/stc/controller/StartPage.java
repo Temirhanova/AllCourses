@@ -1,7 +1,6 @@
 package ru.innopolis.stc.controller;
 
 import org.apache.log4j.Logger;
-import sun.applet.Main;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,5 +14,5 @@ public class StartPage extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.info("Call do get");
         req.getRequestDispatcher("WEB-INF/pages/start_page.jsp").forward(req, resp);
-        }
+    }
 }
