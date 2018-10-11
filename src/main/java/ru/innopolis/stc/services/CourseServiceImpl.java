@@ -4,10 +4,7 @@ import ru.innopolis.stc.dao.CourseDao;
 import ru.innopolis.stc.daosql.CourseDaoImpl;
 import ru.innopolis.stc.db.connectionPool.DatabaseConnectionPool;
 import ru.innopolis.stc.pojo.Course;
-
 import java.util.List;
-
-
 
 public class CourseServiceImpl implements CourseService {
 

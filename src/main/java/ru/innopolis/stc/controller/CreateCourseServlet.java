@@ -1,10 +1,8 @@
 package ru.innopolis.stc.controller;
 
 import ru.innopolis.stc.pojo.Course;
-import ru.innopolis.stc.pojo.Teacher;
 import ru.innopolis.stc.services.CourseService;
 import ru.innopolis.stc.services.CourseServiceImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
