@@ -15,9 +15,9 @@ public class DatabaseConnectionPool {
     private String pass;
 
     public DatabaseConnectionPool() {
-        this.url = readProperties.getProperty("config", "url");
-        this.user = readProperties.getProperty("config", "user");
-        this.pass = readProperties.getProperty("config", "pass");
+        this.url = readProperties.getProperty("db", "url");
+        this.user = readProperties.getProperty("db", "user");
+        this.pass = readProperties.getProperty("db", "pass");
     }
 
     public Connection getConnection() throws SQLException, ClassNotFoundException {
