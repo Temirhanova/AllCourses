@@ -75,7 +75,7 @@ public class CourseDaoImpl implements CourseDao {
                         resultSet.getInt(5),
                         null,
                         resultSet.getString(7),
-                        resultSet.getString(8)
+                        resultSet.getBytes(8)
                 );
                 course = new Course(
                         resultSet.getInt(1),
@@ -120,7 +120,7 @@ public class CourseDaoImpl implements CourseDao {
                         resultSet.getInt(5),
                         null,
                         resultSet.getString(7),
-                        resultSet.getString(8)
+                        resultSet.getBytes(8)
                 );
                 Course course = new Course(
                         resultSet.getInt(1),
