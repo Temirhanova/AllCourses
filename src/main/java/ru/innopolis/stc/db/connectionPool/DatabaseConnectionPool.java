@@ -1,6 +1,7 @@
 package ru.innopolis.stc.db.connectionPool;
 
 import org.apache.log4j.Logger;
+import ru.innopolis.stc.utils.ReadPropertiesFile;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,14 +9,15 @@ import java.sql.SQLException;
 
 public class DatabaseConnectionPool {
     private final static Logger LOGGER = Logger.getLogger(DatabaseConnectionPool.class);
+    private final static ReadPropertiesFile readProperties = new ReadPropertiesFile();
     private String url;
     private String user;
     private String pass;
 
-    public DatabaseConnectionPool(String url, String user, String pass) {
-        this.url = url;
-        this.user = user;
-        this.pass = pass;
+    public DatabaseConnectionPool() {
+        this.url = readProperties.getProperty("config", "url");
+        this.user = readProperties.getProperty("config", "user");
+        this.pass = readProperties.getProperty("config", "pass");
     }
 
     public Connection getConnection() throws SQLException, ClassNotFoundException {
