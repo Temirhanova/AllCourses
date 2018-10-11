@@ -7,7 +7,7 @@ import ru.innopolis.stc.pojo.Course;
 
 import java.util.List;
 
-import static ru.innopolis.stc.db.connectionPool.DatabaseProperties.*;
+import static ru.innopolis.stc.db.DatabaseProperties.*;
 
 
 public class CourseServiceImpl implements CourseService {

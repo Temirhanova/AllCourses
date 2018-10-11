@@ -7,7 +7,7 @@
     <display-name>Servlet</display-name>
     <servlet>
         <servlet-name>startPage</servlet-name>
-        <servlet-class>ru.innopolis.stc.controller.StartPageServlet</servlet-class>
+        <servlet-class>ru.innopolis.stc.controller.StartPage</servlet-class>
     </servlet>
 
     <servlet>
@@ -40,7 +40,5 @@
         <servlet-name>default</servlet-name>
         <url-pattern>/static/*</url-pattern>
     </servlet-mapping>
-
-
 
 </web-app>
