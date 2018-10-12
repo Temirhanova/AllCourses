@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseUserDaoImpl implements CourseUserDao {
-    DatabaseConnectionPool databaseConnectionPool = new DatabaseConnectionPool("jdbc:postgresql://localhost:5432/allcourse", "postgres", "1234");
+    DatabaseConnectionPool databaseConnectionPool = new DatabaseConnectionPool();
     private final static Logger LOGGER = Logger.getLogger(StartPage.class);
     @Override
     public List<CourseUser> findUsers(Course course) {
