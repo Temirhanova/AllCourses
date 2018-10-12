@@ -60,7 +60,7 @@ ALTER TABLE public.course_user OWNER TO postgres;
 CREATE TABLE lesson (
     id integer NOT NULL,
     course_id integer NOT NULL,
-    name integer NOT NULL,
+    name character NOT NULL,
     content character varying,
     home_work character varying
 );

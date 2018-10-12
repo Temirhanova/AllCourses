@@ -1,6 +1,7 @@
 package ru.innopolis.stc.controller;
 
 import ru.innopolis.stc.pojo.Course;
+import ru.innopolis.stc.pojo.Teacher;
 import ru.innopolis.stc.services.CourseService;
 import ru.innopolis.stc.services.CourseServiceImpl;
 
@@ -30,7 +31,7 @@ public class CreateCourseServlet extends HttpServlet {
         String description = req.getParameter("description");
         Integer teacherId = Integer.valueOf(req.getParameter("teacherId"));
 
-        Course course = new Course(0, false, name, description, null);
+        Course course = new Course(0, false, name, description, new Teacher(teacherId, null, null, null));
         courseService.add(course);
         resp.sendRedirect("/courses");
     }
