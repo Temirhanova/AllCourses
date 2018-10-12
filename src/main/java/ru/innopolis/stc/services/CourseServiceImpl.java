@@ -11,7 +11,7 @@ public class CourseServiceImpl implements CourseService {
     private CourseDao courseDao;
 
     public CourseServiceImpl() {
-        DatabaseConnectionPool databaseConnectionPool = new DatabaseConnectionPool("jdbc:postgresql://localhost:5432/allcourse", "postgres", "1234");
+        DatabaseConnectionPool databaseConnectionPool = new DatabaseConnectionPool();
         courseDao = new CourseDaoImpl(databaseConnectionPool);
     }
 
