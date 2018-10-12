@@ -5,7 +5,6 @@ import ru.innopolis.stc.dao.LessonDao;
 import ru.innopolis.stc.db.connectionPool.DatabaseConnectionPool;
 import ru.innopolis.stc.pojo.Course;
 import ru.innopolis.stc.pojo.Lesson;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,13 +48,11 @@ public class LessonDaoImpl implements LessonDao {
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "SELECT * FROM \"lesson\" WHERE id = ?");) {
             preparedStatement.setInt(1, id);
-
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
                 if (resultSet.next()) {
                     return new Lesson(
                             resultSet.getInt(1),
-                            new Course(1, false, "a", "a"),
-                            // TODO: use method Course.getCourseById(resultSet.getInt(2)) from CourseDaoImpl,
+                            course.getById(resultSet.getInt(2)),
                             resultSet.getString(3),
                             resultSet.getString(4),
                             resultSet.getString(5));
@@ -79,8 +76,7 @@ public class LessonDaoImpl implements LessonDao {
                 while (resultSet.next()) {
                     result.add(new Lesson(
                             resultSet.getInt(1),
-                            new Course(1, false, "a", "a"),
-                            // TODO: use method Course.getCourseById(resultSet.getInt(2)) from CourseDaoImpl
+                            course.getById(resultSet.getInt(2)),
                             resultSet.getString(3),
                             resultSet.getString(4),
                             resultSet.getString(5)));
@@ -99,7 +95,7 @@ public class LessonDaoImpl implements LessonDao {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "UPDATE \"lesson\" SET course_id=?, name=?, content=?, home_work=? " +
-                             "WHERE id=?");) {
+                             "WHERE id=?")) {
             preparedStatement.setInt(1, (lesson.getCourse()).getId());
             preparedStatement.setString(2, lesson.getName());
             preparedStatement.setString(3, lesson.getContent());
