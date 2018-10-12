@@ -19,22 +19,27 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     @Override
-    public Boolean add(Teacher teacher) {
+    public Teacher add(Teacher teacher) {
         try (Connection connection = connectionPool.getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO \"teacher\" VALUES (DEFAUL, ?,?,?) RETURNING id");
             preparedStatement.setInt(1, teacher.getUser().getId());
             preparedStatement.setString(2, teacher.getDescription());
             preparedStatement.setBytes(3, teacher.getPhoto());
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return getById(resultSet.getInt(1));
+                }
+            } catch (SQLException e) {
+                LOGGER.error(e);
+            }
             preparedStatement.execute();
         } catch (SQLException e) {
             LOGGER.error(e);
-            return false;
         } catch (ClassNotFoundException e) {
             LOGGER.error(e);
-            return false;
         }
-        return true;
+        return null;
     }
 
     @Override
