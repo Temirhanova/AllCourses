@@ -7,12 +7,8 @@ import java.util.List;
 
 public interface LessonDao {
     Lesson addLesson(Lesson lesson);
-
     Lesson getById(Integer id);
-
     List<Lesson> getLessonList(Course course);
-
     void update(Lesson lesson);
-
     boolean delete(Integer id);
 }
