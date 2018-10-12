@@ -44,6 +44,7 @@ public class LessonDaoImpl implements LessonDao {
 
     @Override
     public Lesson getById(Integer id) {
+        Course course = null;
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "SELECT * FROM \"lesson\" WHERE id = ?");) {
