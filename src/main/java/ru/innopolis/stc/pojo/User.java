@@ -6,6 +6,10 @@ public class User {
     public static final int TEACHER = 3;
     public static final int ADMINISTRATOR = 4;
 
+    public static final User getEmpty() {
+        return new User(0, GUEST, "", "", "", "");
+    }
+
     private int id;
     private int role;
     private String mail;
@@ -13,7 +17,7 @@ public class User {
     private String firstName;
     private String secondName;
 
-    public User(int id, int role, String mail, String pass, String firstName, String lastName) {
+    public User(int id, int role, String mail, String pass, String firstName, String secondName) {
         this.id = id;
         this.role = role;
         this.mail = mail;

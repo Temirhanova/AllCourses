@@ -73,6 +73,35 @@ public class UserDaoJDBC implements UserDao {
     }
 
     @Override
+    public User getByEmail(String email) {
+        try (Connection connection = connectionPool.getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM \"user\" WHERE email = ?");
+            preparedStatement.setString(1, email);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    User user = new User(
+                            resultSet.getInt(1),
+                            resultSet.getInt(5),
+                            resultSet.getString(4),
+                            resultSet.getString(6),
+                            resultSet.getString(2),
+                            resultSet.getString(3)
+                    );
+                    return user;
+                }
+            } catch (SQLException e) {
+                LOGGER.error(e);
+            }
+        } catch (SQLException e) {
+            LOGGER.error(e);
+        } catch (ClassNotFoundException e) {
+            LOGGER.error(e);
+        }
+        return null;
+    }
+
+    @Override
     public void update(User user) {
         try (Connection connection = connectionPool.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(

@@ -5,6 +5,5 @@
     <meta http-equiv="refresh" content="1;URL=/start_page"/>
 </head>
 <body>
-
 </body>
 </html>

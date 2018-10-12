@@ -4,6 +4,7 @@ import ru.innopolis.stc.pojo.Course;
 import ru.innopolis.stc.pojo.Teacher;
 import ru.innopolis.stc.services.CourseService;
 import ru.innopolis.stc.services.CourseServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ public class CreateCourseServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/pages/create-course.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/pages/create-course.jsp").forward(req, resp);
     }
 
     @Override

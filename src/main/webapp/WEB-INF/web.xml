@@ -36,9 +36,15 @@
         <url-pattern>/course/create</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>registration</servlet-name>
+        <servlet-class>ru.innopolis.stc.controller.Registration</servlet-class>
+    </servlet>
+
     <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>/static/*</url-pattern>
+        <servlet-name>registration</servlet-name>
+        <url-pattern>/registration</url-pattern>
     </servlet-mapping>
+
 
 </web-app>

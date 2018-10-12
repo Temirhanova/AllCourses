@@ -1,6 +1,7 @@
 ﻿<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@attribute name="user" required="true" type="ru.innopolis.stc.pojo.User" %>
 <header class="header">
-    <%--<t:user_state/>--%>
+    <t:user_state user="${user}"/>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Эчпочмак</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -24,5 +25,6 @@
             </form>
         </div>
     </nav>
+
 </header>
 <!-- .header-->

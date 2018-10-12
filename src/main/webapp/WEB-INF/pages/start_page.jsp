@@ -12,9 +12,7 @@
 <body>
 
 <div class="wrapper">
-
-    <t:header/>
-
+    <t:header user="${user}"/>
     <div class="middle">
         <div class="container">
             <main class="content">

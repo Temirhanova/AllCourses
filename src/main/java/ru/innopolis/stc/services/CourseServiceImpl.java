@@ -11,8 +11,7 @@ public class CourseServiceImpl implements CourseService {
     private CourseDao courseDao;
 
     public CourseServiceImpl() {
-        DatabaseConnectionPool databaseConnectionPool = new DatabaseConnectionPool();
-        courseDao = new CourseDaoImpl(databaseConnectionPool);
+        courseDao = new CourseDaoImpl(new DatabaseConnectionPool());
     }
 
     @Override
