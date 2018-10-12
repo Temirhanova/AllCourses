@@ -8,11 +8,11 @@ import java.util.List;
 public interface LessonDao {
     Lesson addLesson(Lesson lesson);
 
-    Lesson getLessonById(Integer id);
+    Lesson getById(Integer id);
 
     List<Lesson> getLessonList(Course course);
 
-    boolean updateLessonById(Lesson lesson);
+    void update(Lesson lesson);
 
-    boolean deleteLessonById(Integer id);
+    boolean delete(Integer id);
 }

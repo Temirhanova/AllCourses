@@ -32,7 +32,7 @@ public class LessonDaoImpl implements LessonDao {
             preparedStatement.setString(4, lesson.getHomework());
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    return getLessonById(resultSet.getInt(1));
+                    return getById(resultSet.getInt(1));
                 }
             } catch (SQLException e) {
                 LOGGER.error(e);
@@ -44,7 +44,7 @@ public class LessonDaoImpl implements LessonDao {
     }
 
     @Override
-    public Lesson getLessonById(Integer id) {
+    public Lesson getById(Integer id) {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "SELECT * FROM \"lesson\" WHERE id = ?");) {
@@ -95,7 +95,7 @@ public class LessonDaoImpl implements LessonDao {
     }
 
     @Override
-    public boolean updateLessonById(Lesson lesson) {
+    public void update(Lesson lesson) {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "UPDATE \"lesson\" SET course_id=?, name=?, content=?, home_work=? " +
@@ -105,15 +105,13 @@ public class LessonDaoImpl implements LessonDao {
             preparedStatement.setString(3, lesson.getContent());
             preparedStatement.setString(4, lesson.getHomework());
             preparedStatement.execute();
-            return true;
         } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
         }
-        return false;
     }
 
     @Override
-    public boolean deleteLessonById(Integer id) {
+    public boolean delete(Integer id) {
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "DELETE FROM \"lesson\" WHERE id=?");) {
