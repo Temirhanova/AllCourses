@@ -133,7 +133,7 @@ CREATE TABLE teacher (
     id integer NOT NULL,
     user_id integer,
     description character varying,
-    phono character varying
+    photo bytea
 );
 
 

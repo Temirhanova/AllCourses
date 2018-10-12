@@ -14,6 +14,9 @@ public class UserDaoJDBC implements UserDao {
     private final static Logger LOGGER = Logger.getLogger(UserDaoJDBC.class);
     private DatabaseConnectionPool connectionPool;
 
+    public UserDaoJDBC() {
+    }
+
     public UserDaoJDBC(DatabaseConnectionPool connectionPool) {
         this.connectionPool = connectionPool;
     }
