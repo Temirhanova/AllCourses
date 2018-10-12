@@ -1,15 +1,14 @@
-﻿<%@ tag import="java.io.PrintWriter" %>
-<%@attribute name="user" required="true" type="ru.innopolis.stc.pojo.User" %>
+﻿<%@attribute name="user" required="true" type="ru.innopolis.stc.pojo.User" %>
 <div class="user_state">
     <%
-        PrintWriter pw = response.getWriter();
+        String outLogin = "";
+
         if (user == null) {
-            pw.print("<a href = \"/login\">Войти</a>");
-            pw.print("<a href = \"/registration\">Регистрация</a>");
+            outLogin = "<a href = \"/login\">Войти</a> <a href = \"/registration\">Регистрация</a>";
         } else {
-            pw.print("<a>" + user.getFirstName() + "</a>");
-            pw.print("<a href = \"/login?action=exit\">Выход</a>");
+            outLogin = "<a>" + user.getFirstName() + "</a><a href = \"/login?action=exit\">Выход</a>";
         }
     %>
+    <%=outLogin%>
 </div>
 <!-- .user_state -->

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" href="/static/images/favicon.ico"/>
     <meta charset="utf-8"/>
     <title>Все курсы</title>
     <link rel="stylesheet" href="/css/style.css">
@@ -17,16 +18,7 @@
     <div class="middle">
         <div class="container">
             <main class="content">
-                <div class="registration">
-                    <form method="post">
-                        <input name="firstname" placeholder="Имя">
-                        <input name="secondname" placeholder="Фамилия">
-                        <input name="email" placeholder="Е-мейл">
-                        <input name="password" type="password" placeholder="Пароль">
-                        <input type="submit" value="Зарегистрировать">
-                    </form>
-                </div>
-
+                <t:registration_form registrationInfo="${registrationInfo}"/>
             </main><!-- .content -->
         </div><!-- .container-->
 

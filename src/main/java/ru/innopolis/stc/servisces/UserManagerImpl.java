@@ -14,10 +14,13 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public RegistrationInfo registration(User user) {
-        if (user.getFirstName() == null ||
-                user.getSecondName() == null ||
-                user.getMail() == null ||
-                user.getPass() == null) {
+        if (user == null) {
+            return new RegistrationInfo(User.getEmpty(), RegistrationInfo.NON);
+        }
+        if (user.getFirstName().length() < 2 ||
+                user.getSecondName().length() < 2 ||
+                user.getMail().length() < 3 ||
+                user.getPass().length() < 3) {
             return new RegistrationInfo(user, RegistrationInfo.NOT_FILLED_FIELDS);
         }
 
@@ -25,6 +28,8 @@ public class UserManagerImpl implements UserManager {
         if (existingUser != null) {
             return new RegistrationInfo(user, RegistrationInfo.REPEATED_MILE);
         }
-        return null;
+
+        user = userDao.add(user);
+        return new RegistrationInfo(user, RegistrationInfo.SUCCESSFUL_REGISTRATION);
     }
 }

@@ -6,7 +6,6 @@ public class RegistrationInfo {
     public static final int NOT_FILLED_FIELDS = 2;
     public static final int SUCCESSFUL_REGISTRATION = 3;
 
-
     private User user;
     private int info;
 

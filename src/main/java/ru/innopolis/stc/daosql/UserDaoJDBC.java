@@ -18,7 +18,6 @@ public class UserDaoJDBC implements UserDao {
         this.connectionPool = connectionPool;
     }
 
-
     @Override
     public User add(User user) {
         try (Connection connection = connectionPool.getConnection()) {

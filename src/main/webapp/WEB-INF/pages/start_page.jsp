@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" href="/static/images/favicon.ico"/>
     <meta charset="utf-8"/>
     <title>Все курсы</title>
     <link rel="stylesheet" href="/css/style.css">
@@ -11,9 +12,7 @@
 <body>
 
 <div class="wrapper">
-
     <t:header user="${user}"/>
-
     <div class="middle">
         <div class="container">
             <main class="content">
