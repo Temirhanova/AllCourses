@@ -1,7 +1,22 @@
 ﻿<aside class="left-sidebar">
-    <strong>Left Sidebar:</strong> Integer velit. Vestibulum nisi nunc, accumsan ut, vehicula sit amet, porta a,
-    mi. Nam nisl tellus, placerat eget, posuere eget, egestas eget, dui. Pellentesque habitant morbi tristique
-    senectus et netus et malesuada fames ac turpis egestas. In elementum urna a eros. Integer iaculis. Maecenas
-    vel elit.
+    <div class="m-2 text-center col">
+        <img src="/images/java_logo.png" width="100" class="img-fluid" alt="Java logo">
+        <nav>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Курсы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Новости</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Вопросы и ответы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Отзывы</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </aside>
 <!-- .left-sidebar -->

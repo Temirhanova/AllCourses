@@ -4,9 +4,10 @@
         String outLogin = "";
 
         if (user == null) {
-            outLogin = "<a href = \"/login\">Войти</a> <a href = \"/registration\">Регистрация</a>";
+            outLogin = "<a class=\"btn btn-outline-success\" href=\"/login\" role=\"button\">Войти</a>\n" +
+                    "<a class=\"btn btn-outline-success\" href=\"/registration\" role=\"button\">Регистрация</a>";
         } else {
-            outLogin = "<a>" + user.getFirstName() + "</a><a href = \"/login?action=exit\">Выход</a>";
+            outLogin = "<a>" + user.getFirstName() + "</a><a class=\"btn btn-outline-success\" href=\"/login?action=exit\" role=\"button\">Выйти</a>";
         }
     %>
     <%=outLogin%>
