@@ -22,7 +22,7 @@ public class LessonDaoImpl implements LessonDao {
     }
 
     @Override
-    public boolean addLesson(Lesson lesson) {
+    public Lesson addLesson(Lesson lesson) {
         try (Connection connection = connectionPool.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO \"lesson\" values (DEFAULT, ?, ?, ?, ?) RETURNING id");
@@ -30,12 +30,17 @@ public class LessonDaoImpl implements LessonDao {
             preparedStatement.setString(2, lesson.getName());
             preparedStatement.setString(3, lesson.getContent());
             preparedStatement.setString(4, lesson.getHomework());
-            preparedStatement.execute();
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return getLessonById(resultSet.getInt(1));
+                }
+            } catch (SQLException e) {
+                LOGGER.error(e);
+            }
         } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
-            return false;
         }
-        return true;
+        return null;
     }
 
     @Override
@@ -57,18 +62,18 @@ public class LessonDaoImpl implements LessonDao {
                 }
             }
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return null;
     }
 
     @Override
-    public List<Lesson> getLessonList(Integer id) {
+    public List<Lesson> getLessonList(Course course) {
         List<Lesson> result = null;
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT * FROM \"lesson\" WHERE id = ?");) {
-            preparedStatement.setInt(1, id);
+                     "SELECT * FROM \"lesson\" WHERE course_id = ?");) {
+            preparedStatement.setInt(1, course.getId());
             try (ResultSet resultSet = preparedStatement.executeQuery();) {
                 result = new ArrayList<>();
                 while (resultSet.next()) {
@@ -81,10 +86,10 @@ public class LessonDaoImpl implements LessonDao {
                             resultSet.getString(5)));
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                LOGGER.error(e);
             }
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return result;
     }
@@ -102,7 +107,7 @@ public class LessonDaoImpl implements LessonDao {
             preparedStatement.execute();
             return true;
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return false;
     }
@@ -115,10 +120,10 @@ public class LessonDaoImpl implements LessonDao {
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
             return false;
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            LOGGER.error(e);
         }
         return true;
     }
