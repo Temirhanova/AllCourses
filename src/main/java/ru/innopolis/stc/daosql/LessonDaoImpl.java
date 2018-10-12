@@ -1,6 +1,7 @@
 package ru.innopolis.stc.daosql;
 
 import org.apache.log4j.Logger;
+import ru.innopolis.stc.dao.CourseDao;
 import ru.innopolis.stc.dao.LessonDao;
 import ru.innopolis.stc.db.connectionPool.DatabaseConnectionPool;
 import ru.innopolis.stc.pojo.Course;
@@ -16,8 +17,11 @@ public class LessonDaoImpl implements LessonDao {
     private final static Logger LOGGER = Logger.getLogger(LessonDaoImpl.class);
     private DatabaseConnectionPool connectionPool;
 
-    public LessonDaoImpl(DatabaseConnectionPool connectionPool) {
+    private CourseDao courseDao;
+
+    public LessonDaoImpl(DatabaseConnectionPool connectionPool, CourseDao courseDao) {
         this.connectionPool = connectionPool;
+        this.courseDao = courseDao;
     }
 
     @Override
@@ -53,7 +57,7 @@ public class LessonDaoImpl implements LessonDao {
                 if (resultSet.next()) {
                     return new Lesson(
                             resultSet.getInt(1),
-                            course.getById(resultSet.getInt(2)),
+                            courseDao.getById(resultSet.getInt(2)),
                             resultSet.getString(3),
                             resultSet.getString(4),
                             resultSet.getString(5));
@@ -77,7 +81,7 @@ public class LessonDaoImpl implements LessonDao {
                 while (resultSet.next()) {
                     result.add(new Lesson(
                             resultSet.getInt(1),
-                            course.getById(resultSet.getInt(2)),
+                            courseDao.getById(resultSet.getInt(2)),
                             resultSet.getString(3),
                             resultSet.getString(4),
                             resultSet.getString(5)));
