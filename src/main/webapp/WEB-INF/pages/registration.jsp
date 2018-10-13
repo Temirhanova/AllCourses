@@ -5,29 +5,25 @@
 <head>
     <link rel="icon" href="/static/images/favicon.ico"/>
     <meta charset="utf-8"/>
-    <title>Все курсы</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Регистрация</title>
+    <t:bootstrap/>
+
 </head>
 
 <body>
+<t:header user="${user}"/>
 
-<div class="wrapper">
-
-    <t:header user="${user}"/>
-
-    <div class="middle">
-        <div class="container">
-            <main class="content">
-                <t:registration_form registrationInfo="${registrationInfo}"/>
-            </main><!-- .content -->
-        </div><!-- .container-->
-
+<div class="container-fluid">
+    <div class="row">
         <t:left_sidebar/>
-
-    </div><!-- .middle-->
-
-</div><!-- .wrapper -->
-
+        <div class="col-10 m-2">
+            <main>
+                <%-- Основное содержимое страницы --%>
+                    <t:registration_form registrationInfo="${registrationInfo}"/>
+            </main>
+        </div>
+    </div>
+</div>
 <t:footer/>
 
 </body>
