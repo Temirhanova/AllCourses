@@ -21,6 +21,7 @@ public class CourseDaoImpl implements CourseDao {
         this.connectionPool = connectionPool;
     }
 
+    //test for commit
     @Override
     public Course add(Course course) {
         String query = "INSERT INTO course values (DEFAULT, ?, ?, ?, ?) RETURNING id";
