@@ -34,9 +34,7 @@ public class TeacherDaoImpl implements TeacherDao {
                 LOGGER.error(e);
             }
             preparedStatement.execute();
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
         }
         return null;
@@ -59,9 +57,7 @@ public class TeacherDaoImpl implements TeacherDao {
                     return teacher;
                 }
             }
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
         }
         return null;
@@ -77,10 +73,7 @@ public class TeacherDaoImpl implements TeacherDao {
             preparedStatement.setBytes(3, teacher.getPhoto());
             preparedStatement.setInt(4, teacher.getId());
             preparedStatement.execute();
-        } catch (SQLException e) {
-            LOGGER.error(e);
-            return false;
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
             return false;
         }

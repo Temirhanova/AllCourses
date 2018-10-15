@@ -1,9 +1,8 @@
-package ru.innopolis.stc.servisces;
+package ru.innopolis.stc.services;
 
 import ru.innopolis.stc.dao.UserDao;
 import ru.innopolis.stc.pojo.RegistrationInfo;
 import ru.innopolis.stc.pojo.User;
-import ru.innopolis.stc.servicesInterfaces.UserManager;
 
 public class UserManagerImpl implements UserManager {
     private UserDao userDao;
