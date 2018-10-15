@@ -8,6 +8,5 @@ import java.util.List;
 
 public interface CourseUserDao {
     List<CourseUser> findCourses(User user);
-
     public List<CourseUser> findUsers(Course course);
 }

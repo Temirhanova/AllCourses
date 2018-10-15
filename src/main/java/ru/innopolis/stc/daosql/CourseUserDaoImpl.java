@@ -1,7 +1,6 @@
 package ru.innopolis.stc.daosql;
 
 import org.apache.log4j.Logger;
-import ru.innopolis.stc.controller.StartPage;
 import ru.innopolis.stc.dao.CourseUserDao;
 import ru.innopolis.stc.db.connectionPool.DatabaseConnectionPool;
 import ru.innopolis.stc.pojo.Course;
@@ -17,7 +16,7 @@ import java.util.List;
 
 public class CourseUserDaoImpl implements CourseUserDao {
     DatabaseConnectionPool databaseConnectionPool = new DatabaseConnectionPool();
-    private final static Logger LOGGER = Logger.getLogger(StartPage.class);
+    private final static Logger LOGGER = Logger.getLogger(CourseUserDaoImpl.class);
     @Override
     public List<CourseUser> findUsers(Course course) {
         List<CourseUser> courseUsers = null;
@@ -33,9 +32,7 @@ public class CourseUserDaoImpl implements CourseUserDao {
                     // TODO: 10.10.2018 use method CourseDao.getID(int id); with check. use method UserDao.getID(int id); with check.
                 }
             }
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
         }
         return courseUsers;
@@ -58,9 +55,7 @@ public class CourseUserDaoImpl implements CourseUserDao {
 //                            resultSet.getInt(2)));
                 }
             }
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
         }
         return courseUsers;

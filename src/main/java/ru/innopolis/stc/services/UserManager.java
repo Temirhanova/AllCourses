@@ -1,4 +1,4 @@
-package ru.innopolis.stc.servicesInterfaces;
+package ru.innopolis.stc.services;
 
 import ru.innopolis.stc.pojo.RegistrationInfo;
 import ru.innopolis.stc.pojo.User;
