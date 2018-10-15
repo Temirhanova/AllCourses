@@ -38,9 +38,7 @@ public class UserDaoJDBC implements UserDao {
             } catch (SQLException e) {
                 LOGGER.error(e);
             }
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
         }
         return null;
@@ -67,9 +65,7 @@ public class UserDaoJDBC implements UserDao {
             } catch (SQLException e) {
                 LOGGER.error(e);
             }
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
         }
         return null;
@@ -96,9 +92,7 @@ public class UserDaoJDBC implements UserDao {
             } catch (SQLException e) {
                 LOGGER.error(e);
             }
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
         }
         return null;
@@ -116,9 +110,7 @@ public class UserDaoJDBC implements UserDao {
             preparedStatement.setInt(4, user.getRole());
             preparedStatement.setString(5, user.getPass());
             preparedStatement.execute();
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
         }
     }
@@ -135,9 +127,7 @@ public class UserDaoJDBC implements UserDao {
             preparedStatement.setInt(5, user.getRole());
             preparedStatement.setString(6, user.getPass());
             preparedStatement.execute();
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             LOGGER.error(e);
         }
     }

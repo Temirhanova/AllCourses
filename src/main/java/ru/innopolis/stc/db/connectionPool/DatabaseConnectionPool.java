@@ -2,7 +2,6 @@ package ru.innopolis.stc.db.connectionPool;
 
 import org.apache.log4j.Logger;
 import ru.innopolis.stc.utils.ReadPropertiesFile;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -25,10 +24,7 @@ public class DatabaseConnectionPool {
             Class.forName("org.postgresql.Driver");
             //TODO нужно будет сделать реализацию с пулом
             return DriverManager.getConnection(url, user, pass);
-        } catch (ClassNotFoundException e) {
-            LOGGER.error(e);
-            throw e;
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             LOGGER.error(e);
             throw e;
         }
