@@ -1,4 +1,4 @@
-package ru.innopolis.stc.controller;
+package ru.innopolis.stc.controller.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

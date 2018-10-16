@@ -1,4 +1,4 @@
-package ru.innopolis.stc.pojo;
+package ru.innopolis.stc.bean;
 
 public class RegistrationInfo {
     public static final int NON = 0;

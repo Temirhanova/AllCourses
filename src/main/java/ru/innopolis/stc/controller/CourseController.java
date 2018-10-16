@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.innopolis.stc.pojo.Course;
-import ru.innopolis.stc.pojo.Teacher;
-import ru.innopolis.stc.services.CourseService;
+import ru.innopolis.stc.bean.Course;
+import ru.innopolis.stc.bean.Teacher;
+import ru.innopolis.stc.service.ICourseService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotBlank;
@@ -19,7 +19,7 @@ import java.util.List;
 public class CourseController {
 
     @Autowired
-    private CourseService courseService;
+    private ICourseService courseService;
 
     @PostMapping("course/create")
     public String createCourse(@RequestParam @NotBlank String name,
@@ -38,7 +38,7 @@ public class CourseController {
 
     @GetMapping("/courses")
     public String getAllCourses(Model model){
-        List<Course> courses = courseService.getAll();
+        List<Course> courses = courseService.findAll();
         model.addAttribute("courses", courses);
         return "courses";
     }
@@ -49,6 +49,4 @@ public class CourseController {
         model.addAttribute("course", course);
         return "course";
     }
-
-
 }

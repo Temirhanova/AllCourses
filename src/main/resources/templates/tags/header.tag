@@ -1,5 +1,5 @@
 ﻿<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@attribute name="user" required="true" type="ru.innopolis.stc.pojo.User" %>
+<%@attribute name="user" required="true" type="ru.innopolis.stc.bean.User" %>
 <header class="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Эчпочмак</a>
