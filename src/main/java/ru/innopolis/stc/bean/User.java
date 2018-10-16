@@ -18,11 +18,22 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "role")
     private int role;
+
+    @Column(name = "mail")
     private String mail;
+
+    @Column(name = "pass")
     private String pass;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "second_name")
     private String secondName;
 
     public User() {

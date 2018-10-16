@@ -8,12 +8,21 @@ import java.util.Objects;
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "course_id")
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
     private Course course;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "content")
     private String content;
+
+    @Column(name = "home_work")
     private String homework;
 
     public Lesson() {

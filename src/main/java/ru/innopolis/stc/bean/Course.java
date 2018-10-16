@@ -8,11 +8,19 @@ import java.util.Objects;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "moderation_status")
     private boolean moderationstatus;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "teacher_id")
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Teacher teacher;

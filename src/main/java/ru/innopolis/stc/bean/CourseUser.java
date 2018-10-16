@@ -8,13 +8,16 @@ import java.util.Objects;
 public class CourseUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
 
     //TODO кажется можно удалить эту таблицу и поправить связи Course и User с поиошью аннотаций
+    @Column(name = "course_id")
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Course course;
 
+    @Column(name = "user_id")
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private User user;

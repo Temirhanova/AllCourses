@@ -7,14 +7,21 @@ import java.util.Objects;
 @Entity
 @Table(name = "teacher")
 public class Teacher {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
 
+    @Column(name = "user_id")
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "photo")
     private byte[] photo;
 
     public Teacher() {
