@@ -1,6 +1,8 @@
 package ru.innopolis.stc.daosql;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import ru.innopolis.stc.dao.CourseDao;
 import ru.innopolis.stc.db.connectionPool.DatabaseConnectionPool;
 import ru.innopolis.stc.pojo.Course;
@@ -10,11 +12,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class CourseDaoImpl implements CourseDao {
 
     private final static Logger LOGGER = Logger.getLogger(CourseDaoImpl.class);
 
-
+    @Autowired
     private DatabaseConnectionPool connectionPool;
 
     public CourseDaoImpl(DatabaseConnectionPool connectionPool) {
@@ -46,7 +49,7 @@ public class CourseDaoImpl implements CourseDao {
     public Course update(Course course) {
         String query = "UPDATE course " +
                 "SET moderation_status = ?, name = ?, description = ? " +
-                "WHERE id = ?";
+                "WHERE course.id = ?";
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setBoolean(1, course.isModerationstatus());
@@ -66,7 +69,7 @@ public class CourseDaoImpl implements CourseDao {
         Course course = null;
         String query = "SELECT * FROM course  " +
                 "JOIN teacher ON course.teacher_id = teacher.id " +
-                "WHERE id = ?";
+                "WHERE course.id = ?";
         try (Connection connection = connectionPool.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, id);

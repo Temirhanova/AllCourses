@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: head">
+    <title id="pageTitle"> Все курсы </title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Имя </th>
+        <th> Описание </th>
+        <th> Статус модерации </th>
+        <!--<th> Учитель </th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${courses.empty}">
+        <td colspan="2"> No Books Available </td>
+    </tr>
+    <tr th:each="course : ${courses}">
+        <td><span th:text="${course.name}"> Имя </span></td>
+        <td><span th:text="${course.description}"> Описание </span></td>
+        <td><span th:text="${course.moderationstatus}">  Статус модерации </span></td>
+        <!--<td><span th:text="${course.teacher.}"> Учитель </span></td>-->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

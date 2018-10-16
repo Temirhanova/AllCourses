@@ -1,11 +1,13 @@
 package ru.innopolis.stc.db.connectionPool;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 import ru.innopolis.stc.utils.ReadPropertiesFile;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+@Service
 public class DatabaseConnectionPool {
     private final static Logger LOGGER = Logger.getLogger(DatabaseConnectionPool.class);
     private final static ReadPropertiesFile readProperties = new ReadPropertiesFile();
