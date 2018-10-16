@@ -1,12 +1,20 @@
 package ru.innopolis.stc.bean;
 
-
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "users")
-public class Users {
+@Table(name = "sys_user")
+public class User {
+/*
+    public static final int GUEST = 1;
+    public static final int STUDENT = 2;
+    public static final int TEACHER = 3;
+    public static final int ADMINISTRATOR = 4;
+
+    public static final SystemUser getEmpty() {
+        return new SystemUser(0, GUEST, "", "", "", "");
+    }*/
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,11 +25,10 @@ public class Users {
     private String firstName;
     private String secondName;
 
-    public Users() {
+    public User() {
     }
 
-
-    public Users(int id, int role, String mail, String pass, String firstName, String secondName) {
+    public User(int id, int role, String mail, String pass, String firstName, String secondName) {
         this.id = id;
         this.role = role;
         this.mail = mail;
@@ -82,13 +89,13 @@ public class Users {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Users users = (Users) o;
-        return id == users.id &&
-                role == users.role &&
-                Objects.equals(mail, users.mail) &&
-                Objects.equals(pass, users.pass) &&
-                Objects.equals(firstName, users.firstName) &&
-                Objects.equals(secondName, users.secondName);
+        User user = (User) o;
+        return id == user.id &&
+                role == user.role &&
+                Objects.equals(mail, user.mail) &&
+                Objects.equals(pass, user.pass) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(secondName, user.secondName);
     }
 
     @Override
@@ -98,7 +105,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users{" +
+        return "SystemUser{" +
                 "id=" + id +
                 ", role=" + role +
                 ", mail='" + mail + '\'' +
@@ -107,4 +114,28 @@ public class Users {
                 ", secondName='" + secondName + '\'' +
                 '}';
     }
+
+    /* public User сhangeId(int id) {
+        return new User(id, role, mail, pass, firstName, secondName);
+    }
+
+    public User сhangeType(int type) {
+        return new User(id, type, mail, pass, firstName, secondName);
+    }
+
+    public User сhangeMail(String mail) {
+        return new User(id, role, mail, pass, firstName, secondName);
+    }
+
+    public User сhangePass(String pass) {
+        return new User(id, role, mail, pass, firstName, secondName);
+    }
+
+    public User сhangeFirstName(String firstName) {
+        return new User(id, role, mail, pass, firstName, secondName);
+    }
+
+    public User сhangeSecondName(String secondName) {
+        return new User(id, role, mail, pass, firstName, secondName);
+    }*/
 }

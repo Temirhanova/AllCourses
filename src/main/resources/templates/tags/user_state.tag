@@ -1,4 +1,4 @@
-﻿<%@attribute name="user" required="true" type="ru.innopolis.stc.pojo.User" %>
+﻿<%@attribute name="user" required="true" type="ru.innopolis.stc.bean.User" %>
 <div class="user_state">
     <%
         String outLogin = "";

@@ -6,15 +6,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.innopolis.stc.bean.Users;
-import ru.innopolis.stc.service.IUsersService;
+import ru.innopolis.stc.bean.User;
+import ru.innopolis.stc.service.IUserService;
 
 import java.util.List;
 
 @Controller
 public class UserController {
     @Autowired
-    IUsersService usersService;
+    IUserService userService;
 
     @GetMapping("/greeting")
     public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
@@ -40,7 +40,7 @@ public class UserController {
 
     @RequestMapping("/showUsers")
     public String showUsers(Model model) {
-        List<Users> users = (List<Users>) usersService.findAll();
+        List<User> users = (List<User>) userService.findAll();
         model.addAttribute("usersAll", users);
         return "showUsers";
     }

@@ -1,6 +1,6 @@
-﻿<%@ tag import="ru.innopolis.stc.pojo.RegistrationInfo" %>
-<%@ tag import="ru.innopolis.stc.pojo.User" %>
-<%@attribute name="registrationInfo" required="true" type="ru.innopolis.stc.pojo.RegistrationInfo" %>
+﻿<%@ tag import="ru.innopolis.stc.bean.RegistrationInfo" %>
+<%@ tag import="ru.innopolis.stc.bean.User" %>
+<%@attribute name="registrationInfo" required="true" type="ru.innopolis.stc.bean.RegistrationInfo" %>
 <div class="registration">
     <%
         int id = 0;
