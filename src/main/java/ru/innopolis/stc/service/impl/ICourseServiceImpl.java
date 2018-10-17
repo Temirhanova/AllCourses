@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class ICourseServiceImpl implements ICourseService {
+
     @Autowired
     private CourseRepository courseRepository;
 
@@ -17,5 +18,15 @@ public class ICourseServiceImpl implements ICourseService {
     public List<Course> findAll() {
         List<Course> courses = (List<Course>) courseRepository.findAll();
         return courses;
+    }
+
+    @Override
+    public Course add(Course course) {
+        return courseRepository.save(course);
+    }
+
+    @Override
+    public Course getById(int courseId) {
+        return courseRepository.findById(Long.valueOf(courseId)).get();
     }
 }
