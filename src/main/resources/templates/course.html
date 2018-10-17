@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Курс </title>
+</head>
+<body>
+<div th:with="course=${course}">
+    <p>
+        Вы перешли на курс: <span th:text="${course.name}"></span>
+    </p>
+</div>
+</body>
+</html>

@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface ICourseService {
     List<Course> findAll();
+
+    Course add(Course course);
+
+    Course getById(int courseId);
 }
