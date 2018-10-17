@@ -13,10 +13,10 @@ public class Teacher {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "user_id")
-    @OneToOne(fetch = FetchType.EAGER)
+/*    @Column(name = "user_id")
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user;*/
 
     @Column(name = "description")
     private String description;
@@ -29,7 +29,7 @@ public class Teacher {
 
     public Teacher(int id, User user, String description, byte[] photo) {
         this.id = id;
-        this.user = user;
+//        this.user = user;
         this.description = description;
         this.photo = photo;
     }
@@ -41,15 +41,13 @@ public class Teacher {
     public void setId(int id) {
         this.id = id;
     }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
     public String getDescription() {
         return description;
     }
@@ -72,14 +70,16 @@ public class Teacher {
         if (o == null || getClass() != o.getClass()) return false;
         Teacher teacher = (Teacher) o;
         return id == teacher.id &&
-                Objects.equals(user, teacher.user) &&
+//                Objects.equals(user, teacher.user) &&
                 Objects.equals(description, teacher.description) &&
                 Arrays.equals(photo, teacher.photo);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, user, description);
+        int result = Objects.hash(id,
+//                user,
+                description);
         result = 31 * result + Arrays.hashCode(photo);
         return result;
     }
@@ -88,29 +88,9 @@ public class Teacher {
     public String toString() {
         return "Teacher{" +
                 "id=" + id +
-                ", user=" + user +
+//                ", user=" + user +
                 ", description='" + description + '\'' +
                 ", photo=" + Arrays.toString(photo) +
                 '}';
     }
-
-
-
-/* public Teacher changeId(int id) {
-        return new Teacher(id, user, description, photo);
-    }
-
-    public Teacher changeUser(User user) {
-        return new Teacher(id, user, description, photo);
-    }
-
-    public Teacher changeDescription(String description) {
-        return new Teacher(id, user, description, photo);
-    }
-
-    public Teacher changePhoto(byte[] photo) {
-        return new Teacher(id, user, description, photo);
-    }*/
-
-
 }

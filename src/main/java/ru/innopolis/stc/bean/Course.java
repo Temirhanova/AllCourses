@@ -20,10 +20,10 @@ public class Course {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "teacher_id")
+/*    @Column(name = "teacher_id")
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
-    private Teacher teacher;
+    private Teacher teacher;*/
 
     public Course() {
     }
@@ -33,7 +33,7 @@ public class Course {
         this.moderationstatus = moderationstatus;
         this.name = name;
         this.description = description;
-        this.teacher = teacher;
+//        this.teacher = teacher;
     }
 
     public int getId() {
@@ -68,14 +68,14 @@ public class Course {
         this.description = description;
     }
 
-    public Teacher getTeacher() {
+    /*public Teacher getTeacher() {
         return teacher;
     }
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
-
+*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,13 +84,14 @@ public class Course {
         return id == course.id &&
                 moderationstatus == course.moderationstatus &&
                 Objects.equals(name, course.name) &&
-                Objects.equals(description, course.description) &&
-                Objects.equals(teacher, course.teacher);
+                Objects.equals(description, course.description)
+//                && Objects.equals(teacher, course.teacher)
+;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, moderationstatus, name, description, teacher);
+        return Objects.hash(id, moderationstatus, name, description);
     }
 
     @Override
@@ -100,7 +101,7 @@ public class Course {
                 ", moderationstatus=" + moderationstatus +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", teacher=" + teacher +
+//                ", teacher=" + teacher +
                 '}';
     }
 

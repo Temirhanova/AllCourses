@@ -12,7 +12,7 @@ public class CourseUser {
     private int id;
 
     //TODO кажется можно удалить эту таблицу и поправить связи Course и User с поиошью аннотаций
-    @Column(name = "course_id")
+/*    @Column(name = "course_id")
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Course course;
@@ -20,15 +20,15 @@ public class CourseUser {
     @Column(name = "user_id")
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
-    private User user;
+    private User user;*/
 
     public CourseUser() {
     }
 
     public CourseUser(int id, Course course, User user) {
         this.id = id;
-        this.course = course;
-        this.user = user;
+        /*this.course = course;
+        this.user = user;*/
     }
 
     public int getId() {
@@ -39,7 +39,7 @@ public class CourseUser {
         this.id = id;
     }
 
-    public Course getCourse() {
+   /* public Course getCourse() {
         return course;
     }
 
@@ -54,28 +54,29 @@ public class CourseUser {
     public void setUser(User user) {
         this.user = user;
     }
-
+*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CourseUser that = (CourseUser) o;
-        return id == that.id &&
+        return id == that.id ;
+               /* &&
                 Objects.equals(course, that.course) &&
-                Objects.equals(user, that.user);
+                Objects.equals(user, that.user);*/
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, course, user);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
         return "CourseUser{" +
                 "id=" + id +
-                ", course=" + course +
-                ", user=" + user +
+               /* ", course=" + course +
+                ", user=" + user +*/
                 '}';
     }
 }
