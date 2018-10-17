@@ -19,7 +19,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "role")
     private int role;
@@ -36,10 +36,13 @@ public class User {
     @Column(name = "second_name")
     private String secondName;
 
+    @OneToOne(optional = false, mappedBy="teacher")
+    public Teacher teacher;
+
     public User() {
     }
 
-    public User(int id, int role, String mail, String pass, String firstName, String secondName) {
+    public User(Long id, int role, String mail, String pass, String firstName, String secondName) {
         this.id = id;
         this.role = role;
         this.mail = mail;
@@ -48,11 +51,19 @@ public class User {
         this.secondName = secondName;
     }
 
-    public int getId() {
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -95,6 +106,7 @@ public class User {
     public void setSecondName(String secondName) {
         this.secondName = secondName;
     }
+
 
     @Override
     public boolean equals(Object o) {

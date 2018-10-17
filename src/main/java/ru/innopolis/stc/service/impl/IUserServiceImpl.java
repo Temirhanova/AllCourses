@@ -18,4 +18,9 @@ public class IUserServiceImpl implements IUserService {
         List<User> users = (List<User>) userRepository.findAll();
         return users;
     }
+
+    @Override
+    public User getById(Long id) {
+        return userRepository.findById(id).get();
+    }
 }
