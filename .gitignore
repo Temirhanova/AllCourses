@@ -4,3 +4,4 @@ out/
 .iml
 settings/config.xml
 src/main/resources/db.properties
+src/main/resources/application.properties

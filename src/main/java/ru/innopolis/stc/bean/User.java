@@ -36,7 +36,7 @@ public class User {
     @Column(name = "second_name")
     private String secondName;
 
-    @OneToOne(optional = false, mappedBy="teacher")
+    @OneToOne(mappedBy="user")
     public Teacher teacher;
 
     public User() {
