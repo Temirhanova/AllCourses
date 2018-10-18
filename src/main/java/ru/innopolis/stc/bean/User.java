@@ -14,7 +14,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "mail")
     private String mail;
@@ -28,6 +28,20 @@ public class User implements UserDetails {
     @Column(name = "second_name")
     private String secondName;
 
+    @OneToOne(mappedBy="user")
+    public Teacher teacher;
+
+    public User() {
+    }
+
+    public User(Long id, int role, String mail, String pass, String firstName, String secondName) {
+        this.id = id;
+        this.role = role;
+        this.mail = mail;
+        this.pass = pass;
+        this.firstName = firstName;
+        this.secondName = secondName
+
     @Column(name = "active")
     private boolean active;
 
@@ -39,11 +53,19 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public int getId() {
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -78,6 +100,19 @@ public class User implements UserDetails {
     public void setSecondName(String secondName) {
         this.secondName = secondName;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                role == user.role &&
+                Objects.equals(mail, user.mail) &&
+                Objects.equals(pass, user.pass) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(secondName, user.secondName);
+}
 
     public boolean isActive() {
         return active;

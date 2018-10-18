@@ -8,6 +8,7 @@
         <h1>Hello world!</h1>
         <h1 th:inline="text">Hello [[${userLogined.mail}]]!</h1>
         <p>Click the link <a th:href="@{/showUsers}">showUsers</a> to see a showUsers.</p>
+        <p>Click the link <a th:href="@{/teacher}">teacher</a> to see a teacher.</p>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
         </form>
