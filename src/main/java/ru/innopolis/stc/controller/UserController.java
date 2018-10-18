@@ -18,16 +18,10 @@ public class UserController {
     @Autowired
     IUserService userService;
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
-    }
-
     @GetMapping("/")
     public String index(@RequestParam(name = "name", required = false, defaultValue = "letCode!") String some, Model model) {
         model.addAttribute("some", some);
-        return "index";
+        return "start-page";
     }
 
     @GetMapping("/registration")
@@ -53,17 +47,10 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/hello")
-    public String hello(@AuthenticationPrincipal User userLogined, Model model) {
-        model.addAttribute("userLogined", userLogined);
-        return "hello";
-    }
-
     @GetMapping("/showUsers")
     public String showUsers(@AuthenticationPrincipal User userLogined, Model model) {
         model.addAttribute("userLogined", userLogined);
         model.addAttribute("usersAll", userService.findAll());
         return "showUsers";
     }
-
 }

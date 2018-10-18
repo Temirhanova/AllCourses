@@ -11,11 +11,18 @@
     <div class="row">
         <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
         <div th:with="course=${course}">
-            <p>
-                Вы перешли на курс: <span th:text="${course.name}"></span>
-            </p>
+            <div class="jumbotron">
+                <h1 th:text="${course.name}" class="display-4" > Имя курса </h1>
+                <p th:text="${course.description}" class="lead"> Описание курса </p>
+                <hr class="my-4">
+                <!--<p th:text="${course.teacher}" > ФИО учителя </p>-->
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="#" role="button"> Записаться </a>
+                </p>
+            </div>
         </div>
     </div>
+
 </main>
 <footer th:replace="fragment/footer :: footer"></footer>
 </body>
