@@ -1,10 +1,15 @@
 package ru.innopolis.stc.service;
 
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import ru.innopolis.stc.bean.User;
 
 import java.util.List;
 
-public interface IUserService {
+public interface IUserService extends UserDetailsService {
     List<User> findAll();
+
+    User findByMail(String mail);
+
+    void addUser(User user);
 }
