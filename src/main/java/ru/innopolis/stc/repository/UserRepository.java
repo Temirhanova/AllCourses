@@ -6,4 +6,5 @@ import ru.innopolis.stc.bean.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
+    User findByMail(String mail);
 }
