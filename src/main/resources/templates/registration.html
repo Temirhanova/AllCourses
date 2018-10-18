@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragment/head :: head">
     <title id="pageTitle"> Страница курса </title>
@@ -10,13 +11,18 @@
 
     <div class="row">
         <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
-        <form method="post">
-            <input name="firstname" placeholder="Имя" value="<%=firstName%>">
-            <input name="secondname" placeholder="Фамилия" value="<%=secondName%>">
-            <input name="email" placeholder="Е-мейл" value="<%=mail%>">
-            <input name="password" type="password" placeholder="Пароль" value="<%=pass%>">
-            <input type="submit" value="Зарегистрировать">
-        </form>
+        <div>
+            <div th:if="${message}">
+                <div th:utext="${message}"></div>
+            </div>
+            <form th:action="@{/registration}" method="post">
+                <div><label> Е-майл : <input type="text" name="mail"/> </label></div>
+                <div><label> Пароль: <input type="password" name="pass"/> </label></div>
+                <div><label> Имя: <input type="text" name="firstName"/> </label></div>
+                <div><label> Фамилия: <input type="text" name="secondName"/> </label></div>
+                <div><input type="submit" value="Регистрация"/></div>
+            </form>
+        </div>
     </div>
 
 </main>

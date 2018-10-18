@@ -11,6 +11,7 @@
     <div class="row">
         <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
         <div>
+
             <div th:if="${param.error}">
                 Invalid username and password.
             </div>
@@ -22,6 +23,8 @@
                 <div><label> Password: <input type="password" name="password"/> </label></div>
                 <div><input type="submit" value="Sign In"/></div>
             </form>
+            <a href="/registration">Регистрация</a>
+
         </div>
     </div>
 

@@ -1,6 +1,8 @@
 package ru.innopolis.stc.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.innopolis.stc.bean.User;
 import ru.innopolis.stc.repository.UserRepository;
@@ -15,7 +17,21 @@ public class IUserServiceImpl implements IUserService {
 
     @Override
     public List<User> findAll() {
-        List<User> users = (List<User>) userRepository.findAll();
-        return users;
+        return (List<User>) userRepository.findAll();
+    }
+
+    @Override
+    public User findByMail(String mail) {
+        return userRepository.findByMail(mail);
+    }
+
+    @Override
+    public void addUser(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByMail(username);
     }
 }
