@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/head :: head">
+    <title id="pageTitle"> Все пользователи </title>
+</head>
+<body>
+<header th:replace="fragment/header :: header"></header>
+<!--Основное содержимое страницы-->
+<main class="container-fluid">
+
+    <div class="row">
+        <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
+        <div>
+            <h2>List of cities</h2>
+
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Role</th>
+                    <th>Mail</th>
+                    <th>Password</th>
+                    <th>FirstName</th>
+                    <th>SecondName</th>
+                </tr>
+
+                <tr th:each="users : ${usersAll}">
+                    <td th:text="${users.id}">Id</td>
+                    <td th:text="${users.role}">Role</td>
+                    <td th:text="${users.mail}">Mail</td>
+                    <td th:text="${users.pass}">Password</td>
+                    <td th:text="${users.firstName}">FirstName</td>
+                    <td th:text="${users.secondName}">SecondName</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragment/footer :: footer"></footer>
+</body>
+</html>

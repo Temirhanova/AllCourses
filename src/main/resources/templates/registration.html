@@ -10,12 +10,15 @@
 
     <div class="row">
         <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
-        <div th:with="course=${course}">
-            <p>
-                Вы перешли на курс: <span th:text="${course.name}"></span>
-            </p>
-        </div>
+        <form method="post">
+            <input name="firstname" placeholder="Имя" value="<%=firstName%>">
+            <input name="secondname" placeholder="Фамилия" value="<%=secondName%>">
+            <input name="email" placeholder="Е-мейл" value="<%=mail%>">
+            <input name="password" type="password" placeholder="Пароль" value="<%=pass%>">
+            <input type="submit" value="Зарегистрировать">
+        </form>
     </div>
+
 </main>
 <footer th:replace="fragment/footer :: footer"></footer>
 </body>

@@ -6,10 +6,10 @@ import java.util.Objects;
 @Entity
 @Table(name = "course")
 public class Course {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "moderation_status")
     private boolean moderationstatus;
@@ -28,7 +28,7 @@ public class Course {
     public Course() {
     }
 
-    public Course(int id, boolean moderationstatus, String name, String description, Teacher teacher) {
+    public Course(Integer id, boolean moderationstatus, String name, String description, Teacher teacher) {
         this.id = id;
         this.moderationstatus = moderationstatus;
         this.name = name;
@@ -36,11 +36,11 @@ public class Course {
 //        this.teacher = teacher;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

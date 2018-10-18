@@ -22,7 +22,7 @@ public class UserController {
         return "greeting";
     }
 
-    @GetMapping
+    @GetMapping("/")
     public String index(@RequestParam(name = "name", required = false, defaultValue = "letCode!") String some, Model model) {
         model.addAttribute("some", some);
         return "index";
@@ -42,7 +42,7 @@ public class UserController {
     public String showUsers(Model model) {
         List<User> users = (List<User>) userService.findAll();
         model.addAttribute("usersAll", users);
-        return "showUsers";
+        return "show-users";
     }
 
 }

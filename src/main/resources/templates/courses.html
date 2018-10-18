@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="head :: head">
+<head th:replace="fragment/head :: head">
     <title id="pageTitle"> Все курсы </title>
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th> Имя </th>
-        <th> Описание </th>
-        <th> Статус модерации </th>
-        <!--<th> Учитель </th>-->
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${courses.empty}">
-        <td colspan="2"> No Books Available </td>
-    </tr>
-    <tr th:each="course : ${courses}">
-        <td><span th:text="${course.name}"> Имя </span></td>
-        <td><span th:text="${course.description}"> Описание </span></td>
-        <td><span th:text="${course.moderationstatus}">  Статус модерации </span></td>
-        <!--<td><span th:text="${course.teacher.}"> Учитель </span></td>-->
-    </tr>
-    </tbody>
-</table>
+<header th:replace="fragment/header :: header"></header>
+<!--Основное содержимое страницы-->
+<main class="container-fluid">
+    <div class="row">
+        <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
+        <table>
+            <thead>
+            <tr>
+                <th> Имя </th>
+                <th> Описание </th>
+                <th> Статус модерации </th>
+                <!--<th> Учитель </th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${courses.empty}">
+                <td colspan="2"> В данный момент нет курсов </td>
+            </tr>
+            <tr th:each="course : ${courses}">
+                <td><span th:text="${course.name}"> Имя </span></td>
+                <td><span th:text="${course.description}"> Описание </span></td>
+                <td><span th:text="${course.moderationstatus}">  Статус модерации </span></td>
+                <!--<td><span th:text="${course.teacher.}"> Учитель </span></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+<footer th:replace="fragment/footer :: footer"></footer>
 </body>
 </html>
+
+

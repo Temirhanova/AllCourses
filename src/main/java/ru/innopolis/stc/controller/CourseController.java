@@ -26,7 +26,7 @@ public class CourseController {
                                @RequestParam @NotBlank String description,
                                HttpServletRequest request) {
         Teacher teacher = (Teacher)request.getSession().getAttribute("teacher");
-        Course course = new Course(0, false, name, description, teacher);
+        Course course = new Course(null, false, name, description, teacher);
         courseService.add(course);
         return "redirect:/courses";
     }
@@ -44,7 +44,7 @@ public class CourseController {
     }
 
     @GetMapping("/course/{courseId}")
-    public String getCourse(@PathVariable int courseId, Model model) {
+    public String getCourse(@PathVariable Integer courseId, Model model) {
         Course course = courseService.getById(courseId);
         model.addAttribute("course", course);
         return "course";
