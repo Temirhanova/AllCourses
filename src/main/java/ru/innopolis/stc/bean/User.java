@@ -1,28 +1,20 @@
 package ru.innopolis.stc.bean;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "sys_user")
-public class User {
-/*
-    public static final int GUEST = 1;
-    public static final int STUDENT = 2;
-    public static final int TEACHER = 3;
-    public static final int ADMINISTRATOR = 4;
-
-    public static final SystemUser getEmpty() {
-        return new SystemUser(0, GUEST, "", "", "", "");
-    }*/
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-
-    @Column(name = "role")
-    private int role;
 
     @Column(name = "mail")
     private String mail;
@@ -48,7 +40,17 @@ public class User {
         this.mail = mail;
         this.pass = pass;
         this.firstName = firstName;
-        this.secondName = secondName;
+        this.secondName = secondName
+
+    @Column(name = "active")
+    private boolean active;
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
+
+    public User() {
     }
 
     public Teacher getTeacher() {
@@ -65,14 +67,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
     }
 
     public String getMail() {
@@ -107,7 +101,6 @@ public class User {
         this.secondName = secondName;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -119,46 +112,56 @@ public class User {
                 Objects.equals(pass, user.pass) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(secondName, user.secondName);
+}
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, role, mail, pass, firstName, secondName);
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
     }
 
     @Override
-    public String toString() {
-        return "SystemUser{" +
-                "id=" + id +
-                ", role=" + role +
-                ", mail='" + mail + '\'' +
-                ", pass='" + pass + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
-                '}';
+    public String getPassword() {
+        return pass;
     }
 
-    /* public User сhangeId(int id) {
-        return new User(id, role, mail, pass, firstName, secondName);
+    @Override
+    public String getUsername() {
+        return mail;
     }
 
-    public User сhangeType(int type) {
-        return new User(id, type, mail, pass, firstName, secondName);
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public User сhangeMail(String mail) {
-        return new User(id, role, mail, pass, firstName, secondName);
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public User сhangePass(String pass) {
-        return new User(id, role, mail, pass, firstName, secondName);
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public User сhangeFirstName(String firstName) {
-        return new User(id, role, mail, pass, firstName, secondName);
+    @Override
+    public boolean isEnabled() {
+        return isActive();
     }
-
-    public User сhangeSecondName(String secondName) {
-        return new User(id, role, mail, pass, firstName, secondName);
-    }*/
 }

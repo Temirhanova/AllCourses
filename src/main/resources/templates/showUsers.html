@@ -8,6 +8,7 @@
 
     <body>
         <h2>List of cities</h2>
+        <div th:utext="${userLogined.mail}"></div>
 
         <table>
             <tr>
@@ -19,13 +20,13 @@
                 <th>SecondName</th>
             </tr>
 
-            <tr th:each="users : ${usersAll}">
-                <td th:text="${users.id}">Id</td>
-                <td th:text="${users.role}">Role</td>
-                <td th:text="${users.mail}">Mail</td>
-                <td th:text="${users.pass}">Password</td>
-                <td th:text="${users.firstName}">FirstName</td>
-                <td th:text="${users.secondName}">SecondName</td>
+            <tr th:each="nextUser:${usersAll}">
+                <td th:utext="${nextUser.id}">Id</td>
+                <td th:utext="${nextUser.roles}">Role</td>
+                <td th:utext="${nextUser.mail}">Mail</td>
+                <td th:utext="${nextUser.pass}">Password</td>
+                <td th:utext="${nextUser.firstName}">FirstName</td>
+                <td th:utext="${nextUser.secondName}">SecondName</td>
             </tr>
         </table>
 
