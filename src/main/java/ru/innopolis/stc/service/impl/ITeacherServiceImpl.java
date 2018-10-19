@@ -18,4 +18,9 @@ public class ITeacherServiceImpl implements ITeacherService {
         List<Teacher> teachers = (List<Teacher>) teacherRepository.findAll();
         return teachers;
     }
+
+    @Override
+    public Teacher getById(Long id) {
+        return teacherRepository.findById(id).get();
+    }
 }

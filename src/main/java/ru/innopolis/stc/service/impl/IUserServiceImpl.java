@@ -38,4 +38,9 @@ public class IUserServiceImpl implements IUserService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByMail(username);
     }
+
+    @Override
+    public User getById(Long id) {
+        return userRepository.findById(id).get();
+    }
 }
