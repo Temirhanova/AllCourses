@@ -14,7 +14,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "mail")
     private String mail;
@@ -135,7 +135,7 @@ public class User implements UserDetails {
         return "User{" +
                 "id=" + id +
                 ", mail='" + mail + '\'' +
-                ", pass='" + "****************" + '\'' +
+                ", pass='" + "***" + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", active=" + active +
