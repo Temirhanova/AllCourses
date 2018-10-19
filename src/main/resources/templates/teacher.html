@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Teacher's Page</title>
+<head th:replace="fragment/head :: head">
+    <title id="pageTitle"> Teacher's Page </title>
 </head>
 <body>
+<header th:replace="fragment/header :: header"></header>
+<!--Основное содержимое страницы-->
+<main class="container-fluid">
+    <div class="row">
+        <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
+
     <p th:text="${teacher}" />
+
+    </div>
+</main>
+<footer th:replace="fragment/footer :: footer"></footer>
 </body>
 </html>

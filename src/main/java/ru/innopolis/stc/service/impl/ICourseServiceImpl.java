@@ -26,7 +26,7 @@ public class ICourseServiceImpl implements ICourseService {
     }
 
     @Override
-    public Course getById(int courseId) {
-        return courseRepository.findById(Long.valueOf(courseId)).get();
+    public Course getById(Integer courseId) {
+        return courseRepository.findById(courseId).get();
     }
 }

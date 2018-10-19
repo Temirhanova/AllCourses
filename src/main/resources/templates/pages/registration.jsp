@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" href="/static/images/favicon.ico"/>
+    <link rel="icon" href="/src/main/webapp/static/images/favicon.ico"/>
     <meta charset="utf-8"/>
     <title>Регистрация</title>
     <t:bootstrap/>

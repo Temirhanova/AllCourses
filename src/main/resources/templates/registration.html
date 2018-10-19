@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
->
-<head>
-    <title>Spring Security Example </title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/head :: head">
+    <title id="pageTitle"> Страница курса </title>
 </head>
 <body>
-<div th:if="${message}">
-    <div th:utext="${message}"></div>
-</div>
-<form th:action="@{/registration}" method="post">
-    <div><label> Е-майл : <input type="text" name="mail"/> </label></div>
-    <div><label> Пароль: <input type="password" name="pass"/> </label></div>
-    <div><label> Имя: <input type="text" name="firstName"/> </label></div>
-    <div><label> Фамилия: <input type="text" name="secondName"/> </label></div>
-    <div><input type="submit" value="Регистрация"/></div>
-</form>
+<header th:replace="fragment/header :: header"></header>
+<!--Основное содержимое страницы-->
+<main class="container-fluid">
+
+    <div class="row">
+        <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
+        <div>
+            <div th:if="${message}">
+                <div th:utext="${message}"></div>
+            </div>
+            <form th:action="@{/registration}" method="post">
+                <div><label> Е-майл : <input type="text" name="mail"/> </label></div>
+                <div><label> Пароль: <input type="password" name="pass"/> </label></div>
+                <div><label> Имя: <input type="text" name="firstName"/> </label></div>
+                <div><label> Фамилия: <input type="text" name="secondName"/> </label></div>
+                <div><input type="submit" value="Регистрация"/></div>
+            </form>
+        </div>
+    </div>
+
+</main>
+<footer th:replace="fragment/footer :: footer"></footer>
 </body>
 </html>

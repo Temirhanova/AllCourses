@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/head :: head">
+    <title id="pageTitle"> Главная страница </title>
+</head>
+<body>
+<header th:replace="fragment/header :: header"></header>
+<!--Основное содержимое страницы-->
+<main class="container-fluid">
+
+    <div class="row">
+        <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
+        <div class="col-10 m-2">
+                <strong>Content:</strong> Sed placerat accumsan ligula. Aliquam felis magna, congue quis, tempus
+                eu,
+                aliquam vitae, ante. Cras neque justo, ultrices at, rhoncus a, facilisis eget, nisl. Quisque
+                vitae pede.
+                Nam et augue. Sed a elit. Ut vel massa. Suspendisse nibh pede, ultrices vitae, ultrices nec,
+                mollis non,
+                nibh. In sit amet pede quis leo vulputate hendrerit. Cras laoreet leo et justo auctor
+                condimentum.
+                Integer id enim. Suspendisse egestas, dui ac egestas mollis, libero orci hendrerit lacus, et
+                malesuada
+                lorem neque ac libero. Morbi tempor pulvinar pede. Donec vel elit.
+        </div>
+    </div>
+</main>
+<footer th:replace="fragment/footer :: footer"></footer>
+</body>
+</html>

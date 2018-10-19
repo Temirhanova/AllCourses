@@ -10,5 +10,5 @@ public interface ICourseService {
 
     Course add(Course course);
 
-    Course getById(int courseId);
+    Course getById(Integer courseId);
 }
