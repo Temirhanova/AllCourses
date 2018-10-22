@@ -10,11 +10,10 @@ public class Lesson {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
-/*
-    @Column(name = "course_id")
+
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
-    private Course course;*/
+    @JoinColumn(name = "course_id")
+    private Course course;
 
     @Column(name = "name")
     private String name;
@@ -30,7 +29,7 @@ public class Lesson {
 
     public Lesson(int id, Course course, String name, String content, String homework) {
         this.id = id;
-//        this.course = course;
+        this.course = course;
         this.name = name;
         this.content = content;
         this.homework = homework;
@@ -44,14 +43,14 @@ public class Lesson {
         this.id = id;
     }
 
-   /* public Course getCourse() {
+    public Course getCourse() {
         return course;
     }
 
     public void setCourse(Course course) {
         this.course = course;
     }
-*/
+
     public String getName() {
         return name;
     }
@@ -82,7 +81,6 @@ public class Lesson {
         if (o == null || getClass() != o.getClass()) return false;
         Lesson lesson = (Lesson) o;
         return id == lesson.id &&
-//                Objects.equals(course, lesson.course) &&
                 Objects.equals(name, lesson.name) &&
                 Objects.equals(content, lesson.content) &&
                 Objects.equals(homework, lesson.homework);
@@ -90,41 +88,18 @@ public class Lesson {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id,  name, content, homework);
+        return Objects.hash(id, name, content, homework);
     }
 
     @Override
     public String toString() {
         return "Lesson{" +
                 "id=" + id +
-//                ", course=" + course +
                 ", name='" + name + '\'' +
                 ", content='" + content + '\'' +
                 ", homework='" + homework + '\'' +
                 '}';
     }
-
-
-   /* public Lesson changeId(int id) {
-        return new Lesson(id, course, name, content, homework);
-    }
-
-    public Lesson changeCourse(Course course) {
-        return new Lesson(id, course, name, content, homework);
-    }
-
-    public Lesson changeName(String name) {
-        return new Lesson(id, course, name, content, homework);
-    }
-
-    public Lesson changeContent(String content) {
-        return new Lesson(id, course, name, content, homework);
-    }
-
-    public Lesson changeHomework(String homework) {
-        return new Lesson(id, course, name, content, homework);
-    }
-*/
 }
 
 

@@ -20,9 +20,11 @@ public class Course {
     @Column(name = "description")
     private String description;
 
-/*    @Column(name = "teacher_id")
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "course")
+    private Lesson lesson;
+
+/*  @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;*/
 
     public Course() {
@@ -68,14 +70,22 @@ public class Course {
         this.description = description;
     }
 
-    /*public Teacher getTeacher() {
-        return teacher;
+    public Lesson getLesson() {
+        return lesson;
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
     }
-*/
+
+    /*public Teacher getTeacher() {
+            return teacher;
+        }
+
+        public void setTeacher(Teacher teacher) {
+            this.teacher = teacher;
+        }
+    */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,28 +114,4 @@ public class Course {
 //                ", teacher=" + teacher +
                 '}';
     }
-
-/*
-            public Course changeId(int id) {
-                return new Course(id, moderationstatus, name, description, teacher);
-            }
-
-            public Course changeModerationstatus(boolean moderationstatus) {
-                return new Course(id, moderationstatus, name, description, teacher);
-            }
-
-            public Course changeName(String name) {
-                return new Course(id, moderationstatus, name, description, teacher);
-            }
-
-            public Course changeDescription(String description) {
-                return new Course(id, moderationstatus, name, description, teacher);
-            }
-
-            public Course changeTeacher(Teacher teacher) {
-                return new Course(id, moderationstatus, name, description, teacher);
-            }
-        */
-
-
 }

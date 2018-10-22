@@ -36,6 +36,16 @@ public class CourseController {
         return "create-course";
     }
 
+    @GetMapping("course/create/{courseId}")
+    public String getUpdateCoursePage(@RequestParam(required = false, name = "id") Long id,
+                                      HttpServletRequest request,
+                                      @PathVariable Integer courseId, Model model){
+        Course course = courseService.getById(courseId);
+        model.addAttribute("course", course);
+
+
+        return "create-course";
+    }
     @GetMapping("/courses")
     public String getAllCourses(Model model){
         List<Course> courses = courseService.findAll();

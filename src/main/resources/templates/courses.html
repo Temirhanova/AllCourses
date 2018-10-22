@@ -9,21 +9,27 @@
 <main class="container-fluid">
     <div class="row">
         <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
-        <div>
+        <div class="col-10">
 
-            <div th:if="${courses.empty}">
+            <div class="row" th:if="${courses.empty}">
                 <h3 class="text-center">В данный момент нет курсов</h3>
             </div>
 
-            <div th:each="course : ${courses}">
-                <div class="card border-secondary mb-3">
+            <div class="row" th:if="${!courses.empty}">
+                <h3 class="text-center">Курсы</h3>
+            </div>
+
+            <div class="row" >
+                <div class="col-3 card border-secondary" th:each="course : ${courses}">
                     <div class="card-header">
                         <a th:text="${course.name}" th:href="@{'/course/' + ${course.id}}"> Имя </a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title" th:text="${course.description}"> Описание курса </h5>
+                        <h5 class="card-title"> Описание курса </h5>
+                        <h5 class="card-title" th:utext="${course.description}"></h5>
                         <!--<p class="card-text" th:text="${course.teacher}"> ФИО учителя </p>-->
                         <a href="#" class="btn btn-primary"> Записаться </a>
+                        <a th:href="@{'/course/create/' + ${course.id}}" class="btn btn-primary"> Редактировать </a>
                     </div>
                 </div>
             </div>

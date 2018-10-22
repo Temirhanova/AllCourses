@@ -13,7 +13,7 @@
         <div th:with="course=${course}">
             <div class="jumbotron">
                 <h1 th:text="${course.name}" class="display-4" > Имя курса </h1>
-                <p th:text="${course.description}" class="lead"> Описание курса </p>
+                <p th:utext="${course.description}" class="lead"> Описание курса </p>
                 <hr class="my-4">
                 <!--<p th:text="${course.teacher}" > ФИО учителя </p>-->
                 <p class="lead">

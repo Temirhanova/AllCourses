@@ -11,14 +11,33 @@
     <div class="row">
         <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
         <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
-            <form id="create-course" method="post" th:action="@{/course/create}">
+            <form id="create-course" method="post" th:if="${course}" th:action="@{'/course/create/' + ${course.id}}">
                 <div class="form-group">
                     <label for="name">Название курса</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя ...">
+                    <input type="text" class="form-control" id="name" name="name" th:value="${course.name}" placeholder="Введите имя ...">
                 </div>
                 <div class="form-group">
                     <label for="description">Описание курса</label>
-                    <textarea class="form-control" rows="3" id="description" name="description"></textarea>
+                    <textarea class="form-control" rows="3" id="description" th:text="${course.description}" name="description"></textarea>
+                    <script>
+                        CKEDITOR.replace( 'description' );
+                    </script>
+                </div>
+                <input type="submit" name="Создать курс"/>
+            </form>
+
+            <form id="create-course" method="post" th:unless="${course}" th:action="@{/course/create}">
+
+                <div class="form-group">
+                    <label for="name">Название курса</label>
+                    <input type="text" class="form-control" id="name" name="name"  placeholder="Введите имя ...">
+                </div>
+                <div class="form-group">
+                    <label for="description">Описание курса</label>
+                    <textarea class="form-control" rows="3" id="description"  name="description"></textarea>
+                  <!--  <script>
+                        CKEDITOR.replace( 'description' );
+                    </script>-->
                 </div>
                 <input type="submit" name="Создать курс"/>
             </form>
