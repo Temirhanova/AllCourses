@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/head :: head">
+    <title id="pageTitle"> Создание курса </title>
+</head>
+<body>
+<header th:replace="fragment/header :: header"></header>
+<!--Основное содержимое страницы-->
+<main class="container-fluid">
+
+    <div class="row">
+        <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
+        <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+            <div class="row">
+                <div class="col-7">
+                    <h3>Редактировать</h3>
+                    <!--<form id="create-lesson" method="post" th:action="@{'/lesson/create/' + ${course.id}}">-->
+                    <form id="create-lesson" method="post" th:action="@{'/lesson/create/' + ${course.id}}">
+                        <div class="form-group">
+                            <label for="name">Название урока</label>
+                            <input type="text" class="form-control" id="name" name="name"  placeholder="Введите название ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Описание урока</label>
+                            <textarea class="form-control" rows="3" id="content"  name="content"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Домашнее задание</label>
+                            <textarea class="form-control" rows="3" id="homework"  name="homework"></textarea>
+                        </div>
+                        <input type="submit" name="Создать урок" value="Создать урок"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<footer th:replace="fragment/footer :: footer"></footer>
+</body>
+</html>
