@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.innopolis.stc.bean.Course;
 import ru.innopolis.stc.bean.Teacher;
 import ru.innopolis.stc.service.ICourseService;
+import ru.innopolis.stc.service.ILessonService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.NotBlank;
@@ -21,6 +22,9 @@ public class CourseController {
     @Autowired
     private ICourseService courseService;
 
+    @Autowired
+    private ILessonService lessonService;
+
     @PostMapping("course/create")
     public String createCourse(@RequestParam @NotBlank String name,
                                @RequestParam @NotBlank String description,
@@ -31,21 +35,32 @@ public class CourseController {
         return "redirect:/courses";
     }
 
+    @PostMapping("course/create/{courseId}")
+    public String createPostCourse(@RequestParam @NotBlank String name,
+                                   @RequestParam @NotBlank String description,
+                                   @PathVariable Integer courseId,
+                               HttpServletRequest request) {
+        Teacher teacher = (Teacher)request.getSession().getAttribute("teacher");
+        Course course = courseService.getById(courseId);
+        course.setName(name);
+        course.setDescription(description);
+        courseService.update(course);
+        return "redirect:/courses";
+    }
+
     @GetMapping("course/create")
     public String getCreateCoursePage(){
         return "create-course";
     }
 
     @GetMapping("course/create/{courseId}")
-    public String getUpdateCoursePage(@RequestParam(required = false, name = "id") Long id,
-                                      HttpServletRequest request,
-                                      @PathVariable Integer courseId, Model model){
+    public String getUpdateCoursePage(@PathVariable Integer courseId, Model model){
         Course course = courseService.getById(courseId);
         model.addAttribute("course", course);
-
-
+        model.addAttribute("lessons", lessonService.findAllByCourse(course));
         return "create-course";
     }
+
     @GetMapping("/courses")
     public String getAllCourses(Model model){
         List<Course> courses = courseService.findAll();

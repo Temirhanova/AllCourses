@@ -10,4 +10,5 @@ public interface ICourseService {
     List<Course> findAll();
     Course add(Course course);
     Course getById(Integer courseId);
+    void update(Course course);
 }

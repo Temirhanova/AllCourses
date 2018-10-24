@@ -30,4 +30,9 @@ public class ICourseServiceImpl implements ICourseService {
     public Course getById(Integer courseId) {
         return courseRepository.findById(courseId).get();
     }
+
+    @Override
+    public void update(Course course) {
+        courseRepository.save(course);
+    }
 }

@@ -1,6 +1,8 @@
 package ru.innopolis.stc.bean;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,8 +22,8 @@ public class Course {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "course")
-    private Lesson lesson;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+    private List<Lesson> lessons;
 
 /*  @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id")
@@ -70,12 +72,12 @@ public class Course {
         this.description = description;
     }
 
-    public Lesson getLesson() {
-        return lesson;
+    public List<Lesson> getLesson() {
+        return lessons;
     }
 
-    public void setLesson(Lesson lesson) {
-        this.lesson = lesson;
+    public void setLesson(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
 
     /*public Teacher getTeacher() {

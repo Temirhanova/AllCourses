@@ -11,7 +11,7 @@ public class Lesson {
     @Column(name = "id")
     private int id;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id")
     private Course course;
 
@@ -27,8 +27,7 @@ public class Lesson {
     public Lesson() {
     }
 
-    public Lesson(int id, Course course, String name, String content, String homework) {
-        this.id = id;
+    public Lesson(Course course, String name, String content, String homework) {
         this.course = course;
         this.name = name;
         this.content = content;
