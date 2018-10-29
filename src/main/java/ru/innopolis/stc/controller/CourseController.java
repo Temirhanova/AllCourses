@@ -35,10 +35,13 @@ public class CourseController {
         return "redirect:/courses";
     }
 
-    @PostMapping("course/create/{courseId}")
-    public String createPostCourse(@RequestParam @NotBlank String name,
-                                   @RequestParam @NotBlank String description,
-                                   @PathVariable Integer courseId,
+    /**
+     *  Редактирование/обновление курса
+     */
+    @PostMapping("course/{courseId}")
+    public String updateCourse(@RequestParam @NotBlank String name,
+                               @RequestParam @NotBlank String description,
+                               @PathVariable Integer courseId,
                                HttpServletRequest request) {
         Teacher teacher = (Teacher)request.getSession().getAttribute("teacher");
         Course course = courseService.getById(courseId);
@@ -53,14 +56,6 @@ public class CourseController {
         return "create-course";
     }
 
-    @GetMapping("course/create/{courseId}")
-    public String getUpdateCoursePage(@PathVariable Integer courseId, Model model){
-        Course course = courseService.getById(courseId);
-        model.addAttribute("course", course);
-        model.addAttribute("lessons", lessonService.findAllByCourse(course));
-        return "create-course";
-    }
-
     @GetMapping("/courses")
     public String getAllCourses(Model model){
         List<Course> courses = courseService.findAll();
@@ -71,6 +66,7 @@ public class CourseController {
     @GetMapping("/course/{courseId}")
     public String getCourse(@PathVariable Integer courseId, Model model) {
         Course course = courseService.getById(courseId);
+        model.addAttribute("lessons", lessonService.findAllByCourse(course));
         model.addAttribute("course", course);
         return "course";
     }

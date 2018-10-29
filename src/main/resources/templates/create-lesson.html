@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragment/head :: head">
-    <title id="pageTitle"> Создание курса </title>
+    <title id="pageTitle"> Создание урока </title>
 </head>
 <body>
 <header th:replace="fragment/header :: header"></header>
@@ -13,7 +13,7 @@
         <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
             <div class="row">
                 <div class="col-7">
-                    <h3>Редактировать</h3>
+                    <h3>Создать урок</h3>
                     <!--<form id="create-lesson" method="post" th:action="@{'/lesson/create/' + ${course.id}}">-->
                     <form id="create-lesson" method="post" th:action="@{'/lesson/create/' + ${course.id}}">
                         <div class="form-group">

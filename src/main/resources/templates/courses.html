@@ -29,32 +29,11 @@
                         <h5 class="card-title" th:utext="${course.description}"></h5>
                         <!--<p class="card-text" th:text="${course.teacher}"> ФИО учителя </p>-->
                         <a href="#" class="btn btn-primary"> Записаться </a>
-                        <a th:href="@{'/course/create/' + ${course.id}}" class="btn btn-primary"> Редактировать </a>
+                        <a th:href="@{'/course/' + ${course.id}}" class="btn btn-primary"> Редактировать </a>
                     </div>
                 </div>
             </div>
         </div>
-        <!--<table>-->
-            <!--<thead>-->
-            <!--<tr>-->
-                <!--<th> Имя </th>-->
-                <!--<th> Описание </th>-->
-                <!--<th> Статус модерации </th>-->
-                <!--&lt;!&ndash;<th> Учитель </th>&ndash;&gt;-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--<tr th:if="${courses.empty}">-->
-                <!--<td colspan="2"> В данный момент нет курсов </td>-->
-            <!--</tr>-->
-            <!--<tr th:each="course : ${courses}">-->
-                <!--<td><span th:text="${course.name}"> Имя </span></td>-->
-                <!--<td><span th:text="${course.description}"> Описание </span></td>-->
-                <!--<td><span th:text="${course.moderationstatus}">  Статус модерации </span></td>-->
-                <!--&lt;!&ndash;<td><span th:text="${course.teacher.}"> Учитель </span></td>&ndash;&gt;-->
-            <!--</tr>-->
-            <!--</tbody>-->
-        <!--</table>-->
     </div>
 
 </main>
