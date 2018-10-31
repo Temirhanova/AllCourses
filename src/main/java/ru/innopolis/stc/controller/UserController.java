@@ -47,10 +47,10 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/showUsers")
+    @GetMapping("/show_users")
     public String showUsers(@AuthenticationPrincipal User userLogined, Model model) {
         model.addAttribute("userLogined", userLogined);
         model.addAttribute("usersAll", userService.findAll());
-        return "showUsers";
+        return "show_users";
     }
 }
