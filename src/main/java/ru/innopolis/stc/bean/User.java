@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -35,6 +36,12 @@ public class User implements UserDetails {
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
+    @JoinTable(name = "course_user",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "course_id"))
+    @ManyToMany
+    private Set<Course> courses;
 
     public User() {
     }
@@ -128,6 +135,14 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return isActive();
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 
     @Override

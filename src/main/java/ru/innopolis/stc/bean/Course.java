@@ -1,9 +1,9 @@
 package ru.innopolis.stc.bean;
 
 import javax.persistence.*;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
@@ -25,19 +25,25 @@ public class Course {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     private List<Lesson> lessons;
 
-/*  @OneToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "course_user",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @ManyToMany
+    private Set<User> users;
+
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id")
-    private Teacher teacher;*/
+    private User teacher;
 
     public Course() {
     }
 
-    public Course(Integer id, boolean moderationstatus, String name, String description, Teacher teacher) {
+    public Course(Integer id, boolean moderationstatus, String name, String description, User teacher) {
         this.id = id;
         this.moderationstatus = moderationstatus;
         this.name = name;
         this.description = description;
-//        this.teacher = teacher;
+        this.teacher = teacher;
     }
 
     public Integer getId() {
@@ -80,14 +86,22 @@ public class Course {
         this.lessons = lessons;
     }
 
-    /*public Teacher getTeacher() {
-            return teacher;
-        }
+    public Set<User> getUsers() {
+        return users;
+    }
 
-        public void setTeacher(Teacher teacher) {
-            this.teacher = teacher;
-        }
-    */
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public User getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(User teacher) {
+        this.teacher = teacher;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -98,7 +112,7 @@ public class Course {
                 Objects.equals(name, course.name) &&
                 Objects.equals(description, course.description)
 //                && Objects.equals(teacher, course.teacher)
-;
+                ;
     }
 
     @Override

@@ -3,8 +3,9 @@
         <img src="/images/java_logo.png" width="100" class="img-fluid" alt="Java logo">
         <nav>
             <ul class="nav nav-pills flex-column">
+                <li class="nav-item"><b>Все</b></li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/courses}">Курсы</a>
+                    <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Новости</a>
@@ -14,6 +15,42 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Отзывы</a>
+                </li>
+
+                <li class="nav-item"><b>Для учителя</b></li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item" th:href="@{/myAllCourses}">Авторские курсы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item" th:href="@{/mycourses}">Мои курсы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item" th:href="@{/profile}">Личный кабинет</a>
+                </li>
+
+                <li class="nav-item"><b>Меню ученика</b></li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item" th:href="@{/mycourses}">Мои курсы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item" th:href="@{/profile}">Личный кабинет</a>
+                </li>
+
+                <li class="nav-item"><b>Меню администратора</b></li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item" th:href="@{/moderateCourse}">На модерацию</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item" th:href="@{/users}">Личный кабинет</a>
                 </li>
             </ul>
         </nav>

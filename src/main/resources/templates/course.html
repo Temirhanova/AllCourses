@@ -12,7 +12,7 @@
         <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
         <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
             <div class="row">
-                <div class="col-7">
+                <div class="col-6">
                     <form id="create-course" method="post" th:if="${course}"
                           th:action="@{'/course/' + ${course.id}}">
                         <div class="form-group">
@@ -28,10 +28,10 @@
                                                     CKEDITOR.replace( 'description' );
                                                 </script>-->
                         </div>
-                        <input type="submit" name="Создать курс"/>
+                        <input type="submit" name="Редактировать курс"/>
                     </form>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                     <h3>Уроки</h3>
                     <div class="row">
                         <a th:href="@{'/lesson/create/' + ${course.id}}" class="btn btn-primary"> Создать урок </a>
@@ -47,19 +47,20 @@
 
                     <table th:if="${!lessons.empty}">
                         <tr>
-                            <td>id</td>
-                            <td>course</td>
                             <td>name</td>
                             <td>content</td>
                             <td>homework</td>
+                            <td>U</td>
+                            <td>X</td>
                         </tr>
 
                         <tr th:each="lesson : ${lessons}">
-                            <td th:text="${lesson.id}"></td>
-                            <td th:text="${lesson.course.id}"></td>
                             <td th:text="${lesson.name}"></td>
                             <td th:text="${lesson.content}"></td>
                             <td th:text="${lesson.homework}"></td>
+                            <td><a th:href="@{'/lesson/' + ${lesson.id} + '/' + ${lesson.course.id}}" class="btn btn-primary">U</a></td>
+                            <td><a th:href="@{'/lesson/delete/' + ${lesson.id} +'/' + ${lesson.course.id}}" class="btn btn-primary">X</a></td>
+
                         </tr>
                     </table>
                 </div>
