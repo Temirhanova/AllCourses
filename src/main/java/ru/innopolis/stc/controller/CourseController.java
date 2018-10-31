@@ -65,7 +65,7 @@ public class CourseController {
 
     @GetMapping("/courses")
     public String getAllCourses(Model model){
-        List<Course> courses = courseService.findAll();
+        List<Course> courses = courseService.findAllByModerationstatus(true);
         model.addAttribute("courses", courses);
         return "courses";
     }
@@ -118,6 +118,6 @@ public class CourseController {
     public String moderateCourse(Model model) {
         List<Course> courses = courseService.findAllByModerationstatus(false);
         model.addAttribute("courses", courses);
-        return "moderateCourse";
+        return "courses";
     }
 }
