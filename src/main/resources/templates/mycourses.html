@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/head :: head">
+    <title id="pageTitle"> Все курсы </title>
+</head>
+<body>
+<header th:replace="fragment/header :: header"></header>
+<!--Основное содержимое страницы-->
+<main class="container-fluid">
+    <div class="row">
+        <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
+        <div class="col-10">
+
+            <div class="row" th:if="${courses.empty}">
+                <h3 class="text-center">В данный момент у Вас нет курсов (</h3>
+            </div>
+
+            <div class="row" th:if="${!courses.empty}">
+                <h3 class="text-center">Мои Курсы</h3>
+            </div>
+
+            <div class="row" >
+                <div class="col-3 card border-secondary" th:each="course : ${courses}">
+                    <div class="card-header">
+                        <a th:text="${course.name}" th:href="@{'/course/' + ${course.id}}"> Имя </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"> Описание курса </h5>
+                        <h5 class="card-title" th:utext="${course.description}"></h5>
+                        <!--<p class="card-text" th:text="${course.teacher}"> ФИО учителя </p>-->
+                        <a th:href="@{'/course/' + ${course.id}}" class="btn btn-primary"> Редактировать </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<footer th:replace="fragment/footer :: footer"></footer>
+</body>
+</html>
+
+

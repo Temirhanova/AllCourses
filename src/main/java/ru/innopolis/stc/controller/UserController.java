@@ -19,8 +19,7 @@ public class UserController {
     IUserService userService;
 
     @GetMapping("/")
-    public String index(@RequestParam(name = "name", required = false, defaultValue = "letCode!") String some, Model model) {
-        model.addAttribute("some", some);
+    public String index() {
         return "start-page";
     }
 
@@ -47,10 +46,9 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/show_users")
+    @GetMapping("/users")
     public String showUsers(@AuthenticationPrincipal User userLogined, Model model) {
-        model.addAttribute("userLogined", userLogined);
         model.addAttribute("usersAll", userService.findAll());
-        return "show_users";
+        return "users";
     }
 }

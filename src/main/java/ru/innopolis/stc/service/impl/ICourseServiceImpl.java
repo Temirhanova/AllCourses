@@ -35,4 +35,19 @@ public class ICourseServiceImpl implements ICourseService {
     public void update(Course course) {
         courseRepository.save(course);
     }
+
+    @Override
+    public void save(Course course) {
+        courseRepository.save(course);
+    }
+
+    @Override
+    public List<Course> findAllByModerationstatus(Boolean moderationstatus) {
+        return courseRepository.findAllByModerationstatus(moderationstatus);
+    }
+
+    @Override
+    public List<Course> findAllByTeacher(User teacher) {
+        return courseRepository.findAllByTeacher(teacher);
+    }
 }

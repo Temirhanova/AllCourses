@@ -11,4 +11,6 @@ public interface IUserService extends UserDetailsService {
     User getById(Long id);
     User findByMail(String mail);
     void addUser(User user);
+    void save(User user);
+    void update(User user);
 }
