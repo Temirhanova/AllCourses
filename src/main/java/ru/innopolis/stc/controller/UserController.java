@@ -6,12 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import ru.innopolis.stc.bean.Role;
 import ru.innopolis.stc.bean.User;
 import ru.innopolis.stc.service.IUserService;
-
-import java.util.Collections;
 
 @Controller
 public class UserController {
@@ -19,38 +15,40 @@ public class UserController {
     IUserService userService;
 
     @GetMapping("/")
-    public String index(@RequestParam(name = "name", required = false, defaultValue = "letCode!") String some, Model model) {
-        model.addAttribute("some", some);
+    public String index(@AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         return "start-page";
     }
 
     @GetMapping("/registration")
-    public String registration(Model model) {
+    public String registration(@AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String addUser(User userForm, Model model) {
+    public String addUser(@AuthenticationPrincipal User userLogined, User userForm, Model model) {
+        model.addAttribute("userLogined", userLogined);
         User userFromDb = userService.findByMail(userForm.getMail());
         if (userFromDb != null) {
             model.addAttribute("message", "User exists");
             return "/registration";
         }
+
         userForm.setActive(true);
-        userForm.setRoles(Collections.singleton(Role.USER));
         userService.addUser(userForm);
         return "redirect:/login";
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(@AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         return "login";
     }
 
-    @GetMapping("/showUsers")
+    @GetMapping("/users")
     public String showUsers(@AuthenticationPrincipal User userLogined, Model model) {
-        model.addAttribute("userLogined", userLogined);
         model.addAttribute("usersAll", userService.findAll());
-        return "showUsers";
+        return "users";
     }
 }

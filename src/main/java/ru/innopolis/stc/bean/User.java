@@ -36,7 +36,17 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+    @JoinTable(name = "course_user",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "course_id"))
+    @ManyToMany
+    private Set<Course> courses;
+
     public User() {
+    }
+
+    public boolean isRole(String roleName) {
+        return roles.stream().anyMatch(role -> role.name().equals(roleName));
     }
 
     public Long getId() {
@@ -128,6 +138,14 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return isActive();
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 
     @Override

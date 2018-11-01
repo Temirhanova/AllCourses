@@ -10,5 +10,7 @@ public interface ILessonService {
     List<Lesson> findAll();
     List<Lesson> findAllByCourse(Course course);
     void add(Lesson lesson);
-    Lesson getById(Long id);
+    Lesson getById(Integer lessonId);
+    void update(Lesson lesson);
+    void delete(Lesson lesson);
 }

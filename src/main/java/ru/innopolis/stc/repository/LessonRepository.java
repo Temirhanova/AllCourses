@@ -8,6 +8,6 @@ import ru.innopolis.stc.bean.Lesson;
 import java.util.List;
 
 @Repository
-public interface LessonRepository extends CrudRepository<Lesson, Long> {
+public interface LessonRepository extends CrudRepository<Lesson, Integer> {
     List<Lesson> findAllByCourse(Course course);
 }

@@ -1,6 +1,7 @@
 package ru.innopolis.stc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,13 +12,16 @@ import ru.innopolis.stc.service.ITeacherService;
 import ru.innopolis.stc.service.IUserService;
 
 @Controller
+
 public class TeacherController {
     @Autowired
     private ITeacherService teacherService;
     private IUserService userService;
 
+    @PreAuthorize("hasAnyAuthority('TEACHER')")
     @GetMapping("/teacher")
     public String teacherProfile(@AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         Teacher teacher = teacherService.findByUser(userLogined);
         model.addAttribute("teacher", teacher);
         return "teacher";

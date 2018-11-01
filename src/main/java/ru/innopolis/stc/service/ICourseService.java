@@ -8,7 +8,11 @@ import java.util.List;
 
 public interface ICourseService {
     List<Course> findAll();
+    List<Course> findAllByModerationstatus(Boolean moderationstatus);
+    List<Course> findAllByTeacher(User teacher);
     Course add(Course course);
     Course getById(Integer courseId);
     void update(Course course);
+    void save(Course course);
+
 }

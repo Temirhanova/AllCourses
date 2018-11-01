@@ -33,6 +33,10 @@ public class Teacher {
         this.photo = photo;
     }
 
+    public Teacher(User user) {
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }

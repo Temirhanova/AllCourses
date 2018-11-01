@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/head :: head">
+    <title id="pageTitle"> Страница курса </title>
+</head>
+<body>
+<header th:replace="fragment/header :: header"></header>
+<!--Основное содержимое страницы-->
+<main class="container-fluid">
+
+    <div class="row">
+        <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
+        <div th:with="course=${course}">
+            <h2>Все пользователи</h2>
+            <table>
+                <tr>
+                    <th>Почта</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Редактировать</th>
+                    <th>Удалить</th>
+                </tr>
+
+                <tr th:each="nextUser:${usersAll}">
+                    <td th:utext="${nextUser.mail}">Mail</td>
+                    <td th:utext="${nextUser.firstName}">FirstName</td>
+                    <td th:utext="${nextUser.secondName}">SecondName</td>
+                    <td><a href="">U</a> </td>
+                    <td><a href="">X</a> </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+</main>
+<footer th:replace="fragment/footer :: footer"></footer>
+</body>
+</html>
