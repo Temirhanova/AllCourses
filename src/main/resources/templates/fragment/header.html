@@ -1,4 +1,4 @@
-<header th:fragment="header">
+<header th:fragment="header" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" th:href="@{/}">Эчпочмак</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -12,10 +12,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">О нас</a>
                 </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-success" href="/login" role="button">Войти</a>
-                    <a class="btn btn-outline-success" href="/registration" role="button">Регистрация</a>
-                </li>
+                <div sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-success" href="/login" role="button">Войти</a>
+                        <a class="btn btn-outline-success" href="/registration" role="button">Регистрация</a>
+                    </li>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <form method="post" th:action="@{/logout}">
+                            <input type="submit" class="btn btn-outline-success" value="Выйти"/>
+                        </form>
+                    </li>
+                </div>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Искать" aria-label="Search">

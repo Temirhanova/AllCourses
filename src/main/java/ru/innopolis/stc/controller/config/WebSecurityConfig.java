@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private IUserService iUserService;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+     private PasswordEncoder passwordEncoder;
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
@@ -37,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
                 .logout()
