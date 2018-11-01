@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/head :: head">
+    <title id="pageTitle"> Страница курса </title>
+</head>
+<body>
+<header th:replace="fragment/header :: header"></header>
+<!--Основное содержимое страницы-->
+<main class="container-fluid">
+
+    <div class="row">
+        <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
+        <div th:with="course=${course}">
+
+            <h2>List of cities</h2>
+            <div th:utext="${userLogined.mail}"></div>
+
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Role</th>
+                    <th>Mail</th>
+                    <th>Password</th>
+                    <th>FirstName</th>
+                    <th>SecondName</th>
+                </tr>
+
+                <tr th:each="nextUser:${usersAll}">
+                    <td th:utext="${nextUser.id}">Id</td>
+                    <td th:utext="${nextUser.roles}">Role</td>
+                    <td th:utext="${nextUser.mail}">Mail</td>
+                    <td th:utext="${nextUser.pass}">Password</td>
+                    <td th:utext="${nextUser.firstName}">FirstName</td>
+                    <td th:utext="${nextUser.secondName}">SecondName</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+</main>
+<footer th:replace="fragment/footer :: footer"></footer>
+</body>
+</html>
