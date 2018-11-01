@@ -5,7 +5,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -44,6 +43,10 @@ public class User implements UserDetails {
     private Set<Course> courses;
 
     public User() {
+    }
+
+    public boolean isRole(String roleName) {
+        return roles.stream().anyMatch(role -> role.name().equals(roleName));
     }
 
     public Long getId() {

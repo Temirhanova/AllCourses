@@ -1,6 +1,7 @@
 package ru.innopolis.stc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +36,10 @@ public class CourseController {
     @PostMapping("course/create")
     public String createCourse(@RequestParam @NotBlank String name,
                                @RequestParam @NotBlank String description,
-                               HttpServletRequest request) {
+                               HttpServletRequest request,
+                               @AuthenticationPrincipal User userLogined,
+                               Model model) {
+        model.addAttribute("userLogined", userLogined);
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         Course course = new Course(null, false, name, description, userService.findByMail(attr.getRequest().getUserPrincipal().getName()));
         courseService.add(course);
@@ -50,7 +54,9 @@ public class CourseController {
                                @RequestParam @NotBlank String description,
                                @RequestParam @NotBlank Boolean moderationstatus,
                                @PathVariable Integer courseId,
-                               HttpServletRequest request) {
+                               HttpServletRequest request,
+                               @AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         Teacher teacher = (Teacher)request.getSession().getAttribute("teacher");
         Course course = courseService.getById(courseId);
         course.setName(name);
@@ -66,14 +72,16 @@ public class CourseController {
     }
 
     @GetMapping("/courses")
-    public String getAllCourses(Model model){
+    public String getAllCourses(@AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         List<Course> courses = courseService.findAllByModerationstatus(true);
         model.addAttribute("courses", courses);
         return "courses";
     }
 
     @GetMapping("/course/{courseId}")
-    public String getCourse(@PathVariable Integer courseId, Model model) {
+    public String getCourse(@PathVariable Integer courseId, @AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         Course course = courseService.getById(courseId);
         model.addAttribute("lessons", lessonService.findAllByCourse(course));
         model.addAttribute("course", course);
@@ -81,7 +89,8 @@ public class CourseController {
     }
 
     @GetMapping("/subscribe/{courseId}")
-    public String subscribeCourse(Model model, @PathVariable Integer courseId) {
+    public String subscribeCourse(@PathVariable Integer courseId, @AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         User user = userService.findByMail(attr.getRequest().getUserPrincipal().getName());
         Course course = courseService.getById(courseId);
@@ -91,7 +100,8 @@ public class CourseController {
     }
 
     @GetMapping("/mycourses")
-    public String getMyCourses(Model model){
+    public String getMyCourses(@AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         User user = userService.findByMail(attr.getRequest().getUserPrincipal().getName());
         model.addAttribute("courses", user.getCourses());
@@ -99,7 +109,8 @@ public class CourseController {
     }
 
     @GetMapping("/myAllCourses")
-    public String getMyAllCourses(Model model){
+    public String getMyAllCourses(@AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         User user = userService.findByMail(attr.getRequest().getUserPrincipal().getName());
         model.addAttribute("courses", courseService.findAllByTeacher(user));
@@ -107,7 +118,8 @@ public class CourseController {
     }
 
     @GetMapping("/unsubscribe/{courseId}")
-    public String unSubscribeCourse(Model model, @PathVariable Integer courseId) {
+    public String unSubscribeCourse(@PathVariable Integer courseId, @AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         Course course = courseService.getById(courseId);
         User user = userService.findByMail(attr.getRequest().getUserPrincipal().getName());
@@ -117,7 +129,8 @@ public class CourseController {
     }
 
     @GetMapping("/moderateCourse")
-    public String moderateCourse(Model model) {
+    public String moderateCourse(@AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         List<Course> courses = courseService.findAllByModerationstatus(false);
         model.addAttribute("courses", courses);
         return "courses";

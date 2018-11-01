@@ -21,6 +21,7 @@ public class TeacherController {
     @PreAuthorize("hasAnyAuthority('TEACHER')")
     @GetMapping("/teacher")
     public String teacherProfile(@AuthenticationPrincipal User userLogined, Model model) {
+        model.addAttribute("userLogined", userLogined);
         Teacher teacher = teacherService.findByUser(userLogined);
         model.addAttribute("teacher", teacher);
         return "teacher";
