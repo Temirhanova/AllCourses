@@ -55,7 +55,6 @@ public class CourseController {
         Course course = courseService.getById(courseId);
         course.setName(name);
         course.setDescription(description);
-        System.out.println("------------------------------" + moderationstatus);
         course.setModerationstatus(moderationstatus);
         courseService.update(course);
         return "redirect:/courses";
