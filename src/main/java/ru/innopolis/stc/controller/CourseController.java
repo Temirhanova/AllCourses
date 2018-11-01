@@ -48,12 +48,15 @@ public class CourseController {
     @PostMapping("course/{courseId}")
     public String updateCourse(@RequestParam @NotBlank String name,
                                @RequestParam @NotBlank String description,
+                               @RequestParam @NotBlank Boolean moderationstatus,
                                @PathVariable Integer courseId,
                                HttpServletRequest request) {
         Teacher teacher = (Teacher)request.getSession().getAttribute("teacher");
         Course course = courseService.getById(courseId);
         course.setName(name);
         course.setDescription(description);
+        System.out.println("------------------------------" + moderationstatus);
+        course.setModerationstatus(moderationstatus);
         courseService.update(course);
         return "redirect:/courses";
     }
