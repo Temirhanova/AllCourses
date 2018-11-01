@@ -15,6 +15,9 @@
                 <div th:utext="${message}"></div>
             </div>
             <form th:action="@{/registration}" method="post">
+                <div><input name="roles" type="radio" value="USER" checked>Ученик</p></div>
+                <div><input name="roles" type="radio" value="TEACHER">Учитель</p></div>
+                <div><input name="roles" type="radio" value="ADMINISTRATOR">Администратор</p></div>
                 <div><label> Е-майл : <input type="text" name="mail"/> </label></div>
                 <div><label> Пароль: <input type="password" name="pass"/> </label></div>
                 <div><label> Имя: <input type="text" name="firstName"/> </label></div>

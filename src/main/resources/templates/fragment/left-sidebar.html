@@ -1,61 +1,80 @@
 <aside th:fragment="left-sidebar">
     <div class="text-center col-12">
         <img src="/images/java_logo.png" width="100" class="img-fluid" alt="Java logo">
-        <nav>
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item"><b>Все</b></li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Новости</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Вопросы и ответы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Отзывы</a>
-                </li>
-
-                <li class="nav-item"><b>Для учителя</b></li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/course/create/}">Создать курс</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item" th:href="@{/myAllCourses}">Авторские курсы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item" th:href="@{/mycourses}">Мои курсы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item" th:href="@{/profile}">Личный кабинет</a>
-                </li>
-
-                <li class="nav-item"><b>Меню ученика</b></li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item" th:href="@{/mycourses}">Мои курсы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item" th:href="@{/profile}">Личный кабинет</a>
-                </li>
-
-                <li class="nav-item"><b>Меню администратора</b></li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item" th:href="@{/moderateCourse}">На модерацию</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item" th:href="@{/users}">Пользователи</a>
-                </li>
-            </ul>
-        </nav>
+        <div th:if="${userLogined==null}">
+            <nav>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item"><b>Все</b></li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Новости</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Вопросы и ответы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Отзывы</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div th:if="${userLogined!=null}">
+            <div th:if="${userLogined.isRole('USER')}">
+                <nav>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><b>Меню ученика</b></li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item" th:href="@{/mycourses}">Мои курсы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item" th:href="@{/profile}">Личный кабинет</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div th:if="${userLogined.isRole('TEACHER')}">
+                <nav>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><b>Для учителя</b></li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/course/create/}">Создать курс</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item" th:href="@{/myAllCourses}">Авторские курсы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item" th:href="@{/mycourses}">Мои курсы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item" th:href="@{/profile}">Личный кабинет</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div th:if="${userLogined.isRole('ADMINISTRATOR')}">
+                <nav>
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><b>Меню администратора</b></li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/courses}">Все Курсы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item" th:href="@{/moderateCourse}">На модерацию</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item" th:href="@{/users}">Пользователи</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
 </aside>
