@@ -14,7 +14,6 @@
             <div class="row">
                 <div class="col-7">
                     <h3>Создать урок</h3>
-                    <!--<form id="create-lesson" method="post" th:action="@{'/lesson/create/' + ${course.id}}">-->
                     <form id="create-lesson" method="post" th:action="@{'/lesson/create/' + ${course.id}}">
                         <div class="form-group">
                             <label for="name">Название урока</label>
@@ -29,6 +28,7 @@
                             <textarea class="form-control" rows="3" id="homework"  name="homework"></textarea>
                         </div>
                         <input type="submit" name="Создать урок" value="Создать урок"/>
+                    </form>
                     </form>
                 </div>
             </div>
