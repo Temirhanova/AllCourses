@@ -12,7 +12,7 @@
         <aside th:replace="fragment/left-sidebar :: left-sidebar"></aside>
         <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
             <div class="row">
-                <div class="col-6">
+                <div class="col-7">
                     <form id="create-course" method="post" th:object="${course}" th:if="${course}"
                           th:action="@{'/course/' + ${course.id}}">
                         <div class="form-group">
@@ -35,7 +35,7 @@
                         <input type="submit" name="Редактировать курс"/>
                     </form>
                 </div>
-                <div class="col-6">
+                <div class="col-5">
                     <h3>Уроки</h3>
                     <div class="row">
                         <a th:href="@{'/lesson/create/' + ${course.id}}" class="btn btn-primary"> Создать урок </a>
