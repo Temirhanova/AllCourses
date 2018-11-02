@@ -36,6 +36,7 @@ public class LessonController {
         model.addAttribute("userLogined", userLogined);
         Course course = courseService.getById(courseId);
         model.addAttribute("lesson", course);
+        model.addAttribute("course", course);
         return "create-lesson";
     }
 

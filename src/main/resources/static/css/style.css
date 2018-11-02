@@ -9,6 +9,14 @@ header {
     top: 56px;
     min-height: 600px;
 }
+.card {
+    margin: 0 15px 0 0;
+}
+.card-title {
+    max-height: 250px;
+    overflow: hidden;
+    min-height: 200px;
+}
 footer {
 
 }

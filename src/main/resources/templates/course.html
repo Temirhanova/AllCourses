@@ -28,9 +28,9 @@
                             <label for="description">Описание курса</label>
                             <textarea class="form-control" rows="3" id="description" th:text="${course.description}"
                                       name="description"></textarea>
-                            <!--                    <script>
+                                                <script>
                                                     CKEDITOR.replace( 'description' );
-                                                </script>-->
+                                                </script>
                         </div>
                         <input type="submit" name="Редактировать курс"/>
                     </form>
@@ -49,23 +49,26 @@
                     </div>
 
 
-                    <table th:if="${!lessons.empty}">
-                        <tr>
-                            <td>name</td>
-                            <td>content</td>
-                            <td>homework</td>
-                            <td>U</td>
-                            <td>X</td>
-                        </tr>
+                    <table class="table" th:if="${!lessons.empty}">
+                        <thead class="thead-dark">
+                            <tr>
+                                <td scope="row">name</td>
+                                <td scope="row">content</td>
+                                <td scope="row">homework</td>
+                                <td scope="row">U</td>
+                                <td scope="row">X</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="lesson : ${lessons}">
+                                <td scope="row" th:text="${lesson.name}"></td>
+                                <td scope="row" th:text="${lesson.content}"></td>
+                                <td scope="row" th:text="${lesson.homework}"></td>
+                                <td scope="row"><a th:href="@{'/lesson/' + ${lesson.id} + '/' + ${lesson.course.id}}" class="btn btn-primary">U</a></td>
+                                <td scope="row"><a th:href="@{'/lesson/delete/' + ${lesson.id} +'/' + ${lesson.course.id}}" class="btn btn-primary">X</a></td>
 
-                        <tr th:each="lesson : ${lessons}">
-                            <td th:text="${lesson.name}"></td>
-                            <td th:text="${lesson.content}"></td>
-                            <td th:text="${lesson.homework}"></td>
-                            <td><a th:href="@{'/lesson/' + ${lesson.id} + '/' + ${lesson.course.id}}" class="btn btn-primary">U</a></td>
-                            <td><a th:href="@{'/lesson/delete/' + ${lesson.id} +'/' + ${lesson.course.id}}" class="btn btn-primary">X</a></td>
-
-                        </tr>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
