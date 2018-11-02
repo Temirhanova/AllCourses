@@ -50,6 +50,7 @@ public class LessonController {
             @AuthenticationPrincipal User userLogined, Model model) {
         model.addAttribute("userLogined", userLogined);
         Course course = courseService.getById(courseId);
+        model.addAttribute("course", course);
         if(!name.equals("") && !content.equals("") && !homework.equals("")) {
             Lesson lesson = new Lesson(course, name, content, homework);
             lessonService.add(lesson);
