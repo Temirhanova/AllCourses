@@ -20,11 +20,11 @@
                         </div>
                         <div class="form-group">
                             <label for="content">Описание урока</label>
-                            <textarea class="form-control" rows="3" id="content"  name="content" th:value="${lesson.content}"></textarea>
+                            <textarea class="form-control" rows="3" id="content"  name="content" th:text="${lesson.content}"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="content">Домашнее задание</label>
-                            <textarea class="form-control" rows="3" id="homework"  name="homework" th:value="lesson.homework"></textarea>
+                            <textarea class="form-control" rows="3" id="homework"  name="homework" th:text="${lesson.homework}"></textarea>
                         </div>
                         <input type="submit" name="Редактировать урок" value="Редактировать урок"/>
                     </form>

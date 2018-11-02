@@ -91,7 +91,7 @@ public class LessonController {
                                    @PathVariable Integer courseId,
                                    @AuthenticationPrincipal User userLogined, Model model) {
         model.addAttribute("userLogined", userLogined);
-        Lesson lesson = lessonService.getById(4);
+        Lesson lesson = lessonService.getById(lessonId);
         lesson.setName(name);
         lesson.setContent(content);
         lesson.setHomework(homework);
