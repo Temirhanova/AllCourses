@@ -25,7 +25,7 @@
                         <a th:text="${course.name}" th:href="@{'/course/' + ${course.id}}"> Имя </a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title"> Описание курса </h5>
+                        <p> Описание курса </p>
                         <h5 class="card-title" th:utext="${course.description}"></h5>
                         <a th:href="@{'/course/' + ${course.id}}" class="btn btn-primary"> Редактировать </a>
                     </div>
