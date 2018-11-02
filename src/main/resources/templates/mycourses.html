@@ -28,6 +28,7 @@
                         <p> Описание курса </p>
                         <h5 class="card-title" th:utext="${course.description}"></h5>
                         <!--<p class="card-text" th:text="${course.teacher}"> ФИО учителя </p>-->
+                        <a th:href="@{'/unsubscribe/' + ${course.id}}" class="btn btn-primary"> Отписаться </a>
                         <a th:href="@{'/course/' + ${course.id}}" class="btn btn-primary"> Редактировать </a>
                     </div>
                 </div>
